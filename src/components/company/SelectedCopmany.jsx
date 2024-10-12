@@ -1,0 +1,33 @@
+import { Group,Container } from "@mantine/core"
+import InfoCompany from "./InfoCompany"
+import ImageCompany from "./ImageCompany"
+// import data from '../home/data.json'
+// import { useEffect,useState } from "react";
+// import { FetchCompanyProfile } from "../../api/researcher/fetchCompanyProfile";
+
+
+const SelectedCompany = ({selectedCompany}) => {
+
+  const {uuid,logo,name,description,type,domain,employess_count}  = selectedCompany
+
+    
+    return(
+        <Group p={0}>
+          <Container w={600} h={400} >
+            <ImageCompany />
+          </Container>
+          <Container  w={600} h={400} p={0} >
+            <InfoCompany 
+            id={uuid}
+            logo={logo}
+            name={name}
+            description={description}
+            type={type}
+            domain={domain}
+            numEmployee={employess_count}
+            />
+          </Container>
+        </Group> 
+    )
+}
+export default SelectedCompany

@@ -1,0 +1,23 @@
+.profile input::placeholder{
+    text-align: start;
+}
+.profile input{
+    text-align: start !important;
+    
+}
+.profile .mantine-PasswordInput-root{
+    margin-top: 0 !important;  
+}
+.profile .m_8fb7ebe7{
+    /* border: 1px solid #000 !important; */
+}
+.profile input {
+    border-radius: 10px !important;
+    /* border-color: #000 !important; */
+}
+
+/* .profile textarea {
+    border:1px solid #000 !important;
+} */
+
+

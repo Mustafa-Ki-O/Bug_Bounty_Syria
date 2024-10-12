@@ -1,0 +1,162 @@
+import {Checkbox,Select,TextInput,Button,Group,Anchor,PasswordInput,Grid,GridCol} from "@mantine/core";
+import person from "../../../assets/vectors/Vector1.png";
+import message from "../../../assets/vectors/Vector2.png";
+import PostCompany from "../../../api/copmany/postCompany";
+import webIcon from "../../../assets/vectors/VectorWeb.png";
+import numEmp from "../../../assets/vectors/VectorNum.png";
+import typeicon from "../../../assets/vectors/VectorType.png";
+import "../../../assets/css/company.css";
+import { useNavigate } from "react-router-dom";
+import { yupResolver } from "mantine-form-yup-resolver";
+import * as yup from "yup";
+import { useForm } from "@mantine/form";
+import { useTranslation } from 'react-i18next';
+
+const CompanyForm = () => {
+  const { t } = useTranslation();
+
+  const navigate = useNavigate();
+  const formData = new FormData();
+  formData.append('name', '');
+  formData.append('domain', '');
+  formData.append('type', '');
+  formData.append('employess_count', '');
+  formData.append('email', '');
+  formData.append('password', '');
+  
+  const schema = yup.object().shape({
+    name: yup.string().min(2, t("name should have at least 2 letters ")),
+    domain: yup.string().min(4, t("Invalid domain ")),
+    type: yup.string().required(t("Invalid type")),
+    employess_count: yup.string().required(t("Invalid number of Employee")),
+    email: yup.string().required(t("Invalid email")).email(t("Invalid email")),
+    password: yup
+      .string()
+      .min(8, t("Password should have at least 8 letters or numbers")),
+  });
+  
+  const form = useForm({
+    mode: "uncontrolled",
+    validateInputOnChange: true,
+    initialValues:formData,
+    validate: yupResolver(schema),
+  });
+
+  const handleSubmit = () => {
+    if (form.isValid) {
+      const values = form.getValues();
+      const newFormData = new FormData();
+      Object.keys(values).forEach((key) => {
+        newFormData.append(key, values[key]);
+      });
+      PostCompany(newFormData);
+      console.log(values);
+      navigate("/loginCompany");
+    } 
+  };
+  
+  return (
+    <form
+  onSubmit={form.onSubmit(handleSubmit)}
+  style={{ width: "100%", marginTop: 20 }}
+>
+  <Grid gutter="lg" justify="center" dir="rtl">
+    <GridCol span={{ lg: 6 ,xs: 12 ,sm: 12 ,md:12 }}>
+      <TextInput
+        placeholder={t("أدخل دومين الشركة *")}
+        rightSection={<img src={webIcon} width="20px" />}
+        key={form.key("domain")}
+        {...form.getInputProps("domain")}
+      />
+    </GridCol>
+    <GridCol span={{ lg: 6 ,xs: 12 ,sm: 12 ,md:12 }}>
+      <TextInput
+        placeholder={t("أدخل الاسم الكامل *")}
+        rightSection={<img src={person} width="20px" />}
+        key={form.key("name")}
+        {...form.getInputProps("name")}
+      />
+    </GridCol>
+    <GridCol span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }}>
+      <Select
+        key={form.key("type")}
+        {...form.getInputProps("type")}
+        className="select"
+        mt="md"
+        comboboxProps={{ withinPortal: false }}
+        data={["حكومية", "خاصة"]}
+        placeholder={t("أدخل نوع الشركة *")}
+        rightSection={<img src={typeicon} width="15px" />}
+      />
+    </GridCol>
+    <GridCol span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }}>
+      <TextInput
+        placeholder={t("أدخل عدد موظفين الشركة *")}
+        rightSection={<img src={numEmp} width="20px" />}
+        key={form.key("employess_count")}
+        {...form.getInputProps("employess_count")}
+      />
+    </GridCol>
+    <GridCol  span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }}>
+      <TextInput
+        placeholder={t("أدخل البريد الإلكتروني *")}
+        rightSection={<img src={message} width="20px" />}
+        key={form.key("email")}
+        {...form.getInputProps("email")}
+      />
+    </GridCol>
+    <GridCol span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }}>
+      <PasswordInput
+        placeholder={t("أدخل كلمة المرور *")}
+        key={form.key("password")}
+        {...form.getInputProps("password")}
+      />
+    </GridCol>
+    {/* <GridCol offset={{lg:6,md:6,sm:0,xs:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
+      <Checkbox
+        key={form.key("termsOfService")}
+        {...form.getInputProps("termsOfService", { type: "checkbox" })}
+        size="xs"
+        label={
+          <>
+            {t("أنا اوافق على")}{" "}
+            <Anchor href="https://google.com" target="_blank" inherit>
+              {t("الشروط والاحكام")}
+            </Anchor>
+          </>
+        }
+        style={{ marginBottom: 15,direction:'rtl' }}
+      />
+    </GridCol> */}
+  </Grid>
+  <Grid >
+    <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
+        <Button
+          fullWidth
+          size='md'
+          variant="outline"
+          color="#B21222"
+          onClick={() => navigate("/login")}
+        >
+          {t(" تسجيل الدخول كباحث")}
+        </Button>
+        <Button
+          fullWidth
+          size='md'
+          variant="outline"
+          color="#B21222"
+          onClick={() => navigate("/loginCompany")}
+        >
+          {t("تسجيل الدخول كشركة")}
+        </Button>
+        </GridCol>
+        <GridCol span={{ lg:6 , xs:12, sm:12, md:6 }}>
+        <Button fullWidth  size="md" type="submit" variant="filled" color="#B21222">
+          {t("انشاء حساب")}
+        </Button>
+    </GridCol>
+    </Grid>
+</form>
+  );
+};
+export default CompanyForm;

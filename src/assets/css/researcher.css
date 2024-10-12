@@ -1,0 +1,15 @@
+
+.divider{
+    width: 100%;
+}
+
+.divider span{
+    font-size: 16px !important;
+    font-weight: bolder !important;
+    color: #000;
+}
+
+.divider span::after ,.divider span::before{
+    border-top: 1px solid #000;
+}
+

@@ -1,0 +1,51 @@
+[
+  {
+    "bugName": "Error 1",
+    "searcherName": "Husin",
+    "dateOfReport": "2022-01-01",
+    "bugFile": "error1.log",
+    "status": "Accept"
+  },
+  {
+    "bugName": "Error 2",
+    "searcherName": "Mustafa",
+    "dateOfReport": "2022-01-15",
+    "bugFile": "error2.txt",
+    "status": "Pending"
+  },
+  {
+    "bugName": "Error 3",
+    "searcherName": "Heaven",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Reject"
+  },
+  {
+    "bugName": "Error 3",
+    "searcherName": "Hasan",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Reject"
+  },
+  {
+    "bugName": "Error 3",
+    "searcherName": "Mohammed",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Pending"
+  },
+  {
+    "bugName": "Error 3",
+    "searcherName": "Mahmoud",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Pending"
+  },
+  {
+    "bugName": "Error 3",
+    "searcherName": "Zeid",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Accept"
+  }
+]

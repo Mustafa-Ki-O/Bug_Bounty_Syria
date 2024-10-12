@@ -1,0 +1,12 @@
+.tableProgram {
+  padding: 30px !important;
+  border: none;
+  direction: rtl !important;
+  background-color: transparent;
+}
+
+.tableRowPrograms:nth-child(2n) {
+  background-color: #eee !important;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 0px #00000040;
+}

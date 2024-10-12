@@ -1,0 +1,58 @@
+[
+  {
+    "bugName": "Error 1",
+    "companyName": "ABC Inc.",
+    "dateOfReport": "2022-01-01",
+    "bugFile": "error1.log",
+    "status": "Accept",
+    "rate": 3
+  },
+  {
+    "bugName": "Error 2",
+    "companyName": "XYZ Corp.",
+    "dateOfReport": "2022-01-15",
+    "bugFile": "error2.txt",
+    "status": "Pending",
+    "rate": 2
+  },
+  {
+    "bugName": "Error 3",
+    "companyName": "DEF Ltd.",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Reject",
+    "rate": 1
+  },
+  {
+    "bugName": "Error 3",
+    "companyName": "DEF Ltd.",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Reject",
+    "rate": 1
+  },
+  {
+    "bugName": "Error 3",
+    "companyName": "DEF Ltd.",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Pending",
+    "rate": 1
+  },
+  {
+    "bugName": "Error 3",
+    "companyName": "DEF Ltd.",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Pending",
+    "rate": 1
+  },
+  {
+    "bugName": "Error 3",
+    "companyName": "DEF Ltd.",
+    "dateOfReport": "2022-02-01",
+    "bugFile": "error3.pdf",
+    "status": "Accept",
+    "rate": 1
+  }
+]

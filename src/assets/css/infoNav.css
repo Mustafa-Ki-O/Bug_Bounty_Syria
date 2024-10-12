@@ -1,0 +1,71 @@
+.tabs::before{
+    border:none !important;
+    padding: 30px !important;
+}
+
+.tabs .button{
+    padding:20px !important;
+    box-sizing: border-box !important;
+}
+
+  
+.tabs .button[aria-selected="true"] {
+    position: relative;
+    z-index: 1;
+    border-bottom: none !important;
+  }
+  
+  .tabs .button[aria-selected="true"]:after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    border-radius:  10px 10px 0 0;
+    box-shadow: 0 1px 1px #000;
+    z-index: 2;
+    background-color: #B21222; 
+}
+
+
+.tabs .button:focus {
+    outline: none !important;
+}
+
+.button:hover{
+    background-color: transparent;
+}
+
+.tabs .button:not([aria-selected="true"]) {
+    border-bottom: none !important;
+}
+
+/* for left section */
+
+.tabs .group{
+    padding:20px !important;
+    box-sizing: border-box !important;
+}
+
+  
+.tabs .group[aria-selected="true"] {
+    position: relative;
+    z-index: 1;
+    border-bottom: none !important;
+  }
+  
+
+
+
+.tabs .group:focus {
+    outline: none !important;
+}
+
+.group:hover{
+    background-color: transparent;
+}
+
+.tabs .group:not([aria-selected="true"]) {
+    border-bottom: none !important;
+}

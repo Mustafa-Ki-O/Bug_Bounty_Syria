@@ -38,15 +38,16 @@ const Home = () => {
   console.log("test Git");
   console.log("test Git");
   console.log("test Git");
-  console.log('musatfa')
-  console.log('husin')
-  console.log('hasan')
-  console.log('heaven')
+
+  console.log("musatfa");
+  console.log("husin");
+  console.log("hasan");
+  console.log("heaven");
   return (
     <>
       {progress && <Progress />}
       {company ? (
-        <Container p={20} fluid>
+        <Container p={20} fluid mih="100vh">
           <Diagrams data={data} />
           <Researchers researchers={researchers} />
         </Container>

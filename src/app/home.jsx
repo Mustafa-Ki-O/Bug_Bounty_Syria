@@ -5,10 +5,10 @@ import "../assets/css/home.module.css";
 import { useState, useEffect } from "react";
 import Diagrams from "../components/HomeCompany/Diagrams.jsx";
 import Researchers from "../components/HomeCompany/Researchers.jsx";
-// import { FetchHome } from '../api/researcher/fetchHome.jsx';
 import useFetchHome from "../components/useMutation/company/useFetchHome.jsx";
 import useFetchHomeResearcher from "../components/useMutation/researcher/useFetchHomeResearcher.jsx";
 import Progress from "../components/general/Progress.jsx";
+
 
 const Home = () => {
   const company = localStorage.getItem("company");
@@ -32,16 +32,7 @@ const Home = () => {
 
   const researchers = data.researcher;
 
-  console.log("test Git");
-  console.log("test Git");
-  console.log("test Git");
-  console.log("test Git");
-  console.log("test Git");
-  console.log("test Git");
-  console.log('musatfa')
-  console.log('husin')
-  console.log('hasan')
-  console.log('heaven')
+
   return (
     <>
       {progress && <Progress />}

@@ -1,18 +1,16 @@
-import { Container,Stack } from '@mantine/core';
-import Header from '../components/home/Header.jsx';
-import List from '../components/home/List.jsx';
-import '../assets/css/home.module.css'
-import { useState,useEffect } from 'react';
-import Diagrams from '../components/HomeCompany/Diagrams.jsx';
-import Researchers from '../components/HomeCompany/Researchers.jsx';
+import { Container, Stack } from "@mantine/core";
+import Header from "../components/home/Header.jsx";
+import List from "../components/home/List.jsx";
+import "../assets/css/home.module.css";
+import { useState, useEffect } from "react";
+import Diagrams from "../components/HomeCompany/Diagrams.jsx";
+import Researchers from "../components/HomeCompany/Researchers.jsx";
 // import { FetchHome } from '../api/researcher/fetchHome.jsx';
-import useFetchHome from '../components/useMutation/company/useFetchHome.jsx';
+import useFetchHome from "../components/useMutation/company/useFetchHome.jsx";
 import useFetchHomeResearcher from "../components/useMutation/researcher/useFetchHomeResearcher.jsx";
-import Progress from '../components/general/Progress.jsx';
-
+import Progress from "../components/general/Progress.jsx";
 
 const Home = () => {
-  
   const company = localStorage.getItem("company");
   const [progress, setProgress] = useState(false);
   const { fetch, isLoadingCom } = useFetchHome();
@@ -23,33 +21,39 @@ const Home = () => {
   useEffect(() => {
     if (company) {
       fetch(setData);
-    } else{
+    } else {
       fetchResearcher(setCompanies);
     }
   }, []);
 
   useEffect(() => {
-    setProgress(isLoadingCom||isLoading);
-  }, [isLoadingCom||isLoading]);
+    setProgress(isLoadingCom || isLoading);
+  }, [isLoadingCom || isLoading]);
 
   const researchers = data.researcher;
 
-    return(
-      <>
-      {progress && <Progress/>}
-       {company ? (
-          <Container p={20} fluid>
-            <Diagrams data={data}/> 
-            <Researchers researchers={researchers}/>
-        </Container>
-        ):(
-           <Stack h='auto' p={20} style={{rowGap:40}} >
-            <Header setCompanies={setCompanies}/>
-             <List companies={companies} />
-          </Stack>
-         )}
-        </>
-    )
+  console.log("test Git");
+  console.log("test Git");
+  console.log("test Git");
+  console.log("test Git");
+  console.log("test Git");
+  console.log("test Git");
 
-}
+  return (
+    <>
+      {progress && <Progress />}
+      {company ? (
+        <Container p={20} fluid>
+          <Diagrams data={data} />
+          <Researchers researchers={researchers} />
+        </Container>
+      ) : (
+        <Stack h="auto" p={20} style={{ rowGap: 40 }}>
+          <Header setCompanies={setCompanies} />
+          <List companies={companies} />
+        </Stack>
+      )}
+    </>
+  );
+};
 export default Home;

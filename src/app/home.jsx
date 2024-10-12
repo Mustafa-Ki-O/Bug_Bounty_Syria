@@ -38,7 +38,10 @@ const Home = () => {
   console.log("test Git");
   console.log("test Git");
   console.log("test Git");
-
+  console.log('musatfa')
+  console.log('husin')
+  console.log('hasan')
+  console.log('heaven')
   return (
     <>
       {progress && <Progress />}

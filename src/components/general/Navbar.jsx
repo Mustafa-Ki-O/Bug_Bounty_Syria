@@ -24,139 +24,142 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const company = JSON.parse(localStorage.getItem('company'));
+  const company = JSON.parse(localStorage.getItem("company"));
   const comImg = company && company.data.company.logo;
-  
-  const researcher = JSON.parse(localStorage.getItem('researcher'));
-  const resImg = researcher &&  researcher.data.researcher.image;
-  
+
+  const researcher = JSON.parse(localStorage.getItem("researcher"));
+  const resImg = researcher && researcher.data.researcher.image;
+
   let image = null;
   if (comImg) {
-    image = comImg
+    image = comImg;
   } else {
-    image = resImg
+    image = resImg;
   }
 
-  return (<>
-    <DrawerNav opened={opened} close={close} />
-    <AppShell navbar={{ width: "100%", breakpoint: "sm" }} >
-      <AppShell.Navbar
-        px="md"
-        bg="#F9F9F9"
-        p={0}
-        h="auto"
-        style={{ paddingInline: 0, position: "relative", top: 0, right: 0 }}
-      >
-        <Burger size='md' lineSize={2} hiddenFrom="sm" onClick={open} />
-        <Container
-          visibleFrom="sm"
-          fluid
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-            boxSizing: "border-box",
-            boxShadow: "0 3px 10px #000",
-          }}
+  return (
+    <>
+      <DrawerNav opened={opened} close={close} />
+      <AppShell navbar={{ width: "100%", breakpoint: "sm" }}>
+        <AppShell.Navbar
+          px="md"
+          bg="#F9F9F9"
+          p={0}
+          h="auto"
+          style={{ paddingInline: 0, position: "relative", top: 0, right: 0 }}
         >
-          {location.pathname === "/" || location.pathname === "/login" || location.pathname === '/loginCompany' ? (
-            <Group>
-              <Button
-                variant="outline"
-                color="#B21222"
-                size="md"
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >
-                {t("دخول")}
-              </Button>
-              <Button
-                variant="filled"
-                color="#B21222"
-                size="md"
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                {t("سجل مجاناً")}
-              </Button>
-            </Group>
-          ) : (
-            <>
-              <Tabs w="100%" pr={60}>
-                <Tabs.List
-                  className="tabs"
-                  justify="space-between"
-                  c="#B21222"
-                  style={{ borderRadius: "0 0 25px 25px", gap: 25 }}
+          <Burger size="md" lineSize={2} hiddenFrom="sm" onClick={open} />
+          <Container
+            visibleFrom="sm"
+            fluid
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+              boxSizing: "border-box",
+              boxShadow: "0 3px 10px #000",
+            }}
+          >
+            {location.pathname === "/" ||
+            location.pathname === "/login" ||
+            location.pathname === "/loginCompany" ? (
+              <Group>
+                <Button
+                  variant="outline"
+                  color="#B21222"
+                  size="md"
+                  onClick={() => {
+                    navigate("/login");
+                  }}
                 >
-                  <Group gap={0}>
-                    <Tabs.Tab
-                      className="group"
-                      value="profile"
-                      fz={18}
-                      fw={700}
-                      onClick={() => navigate("/profile")}
-                    >
-                      <Image
-                        src={image}
-                        radius="50%"
-                        w={33}
-                        h={33}
-                        style={{
-                          cursor: "pointer",
-                          border: "1px solid red",
-                        }}
-                      />
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      className="group"
-                      value="notification"
-                      fz={18}
-                      fw={700}
-                    >
-                      <Image
-                        src={notification}
-                        w={20}
-                        style={{ cursor: "pointer" }}
-                      />
-                    </Tabs.Tab>
-                  </Group>
-                  <Group>
-                    <Tabs.Tab
-                      className="button"
-                      value="bugs"
-                      fz={18}
-                      fw={700}
-                      onClick={() => navigate("/gabs")}
-                    >
-                      {t("الثغرات المكتشفة")}
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      className="button"
-                      value="securityInfo"
-                      fz={18}
-                      fw={700}
-                      onClick={() => navigate("/home")}
-                    >
-                      {t("الصفحة الرئيسية")}
-                    </Tabs.Tab>
-                  </Group>
-                </Tabs.List>
-              </Tabs>
-            </>
-          )}
-          <Flex align="center">
-          <LanguageSwitcher />
-            <Link to="/home">
-              <Image src={vector} width={100} p={10} />
-            </Link>
-          </Flex>
-        </Container>
-      </AppShell.Navbar>
-    </AppShell>
+                  {t("دخول")}
+                </Button>
+                <Button
+                  variant="filled"
+                  color="#B21222"
+                  size="md"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  {t("سجل مجاناً")}
+                </Button>
+              </Group>
+            ) : (
+              <>
+                <Tabs w="100%" pr={60}>
+                  <Tabs.List
+                    className="tabs"
+                    justify="space-between"
+                    c="#B21222"
+                    style={{ borderRadius: "0 0 25px 25px", gap: 25 }}
+                  >
+                    <Group gap={0}>
+                      <Tabs.Tab
+                        className="group"
+                        value="profile"
+                        fz={18}
+                        fw={700}
+                        onClick={() => navigate("/profile")}
+                      >
+                        <Image
+                          src={image}
+                          radius="50%"
+                          w={33}
+                          h={33}
+                          style={{
+                            cursor: "pointer",
+                            border: "1px solid red",
+                          }}
+                        />
+                      </Tabs.Tab>
+                      <Tabs.Tab
+                        className="group"
+                        value="notification"
+                        fz={18}
+                        fw={700}
+                      >
+                        <Image
+                          src={notification}
+                          w={20}
+                          style={{ cursor: "pointer" }}
+                        />
+                      </Tabs.Tab>
+                    </Group>
+                    <Group>
+                      <Tabs.Tab
+                        className="button"
+                        value="bugs"
+                        fz={18}
+                        fw={700}
+                        onClick={() => navigate("/gabs")}
+                      >
+                        {t("الثغرات المكتشفة")}
+                      </Tabs.Tab>
+                      <Tabs.Tab
+                        className="button"
+                        value="securityInfo"
+                        fz={18}
+                        fw={700}
+                        onClick={() => navigate("/home")}
+                      >
+                        {t("الصفحة الرئيسية")}
+                      </Tabs.Tab>
+                    </Group>
+                  </Tabs.List>
+                </Tabs>
+              </>
+            )}
+            <Flex align="center">
+              <LanguageSwitcher />
+              <Link to="/home">
+                <Image src={vector} width={100} p={10} />
+              </Link>
+            </Flex>
+          </Container>
+        </AppShell.Navbar>
+      </AppShell>
     </>
   );
 };

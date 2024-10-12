@@ -41,7 +41,7 @@ const Header = ({setCompanies}) => {
             <Text size="lg" c="#1D1D1B" fw={800}>
               ! {t('اكتشف الفرص الان')}
             </Text>
-            <Container fluid p={14} w='100%' bg='#F9F9F9' style={{ boxShadow: '0px 8px 15px #000', display: 'flex', placeItems: 'end', gap: 5, borderRadius: 5 }}>
+            <Container fluid p={14} w='100%' bg='#F9F9F9' style={{ boxShadow: '0px 3px 10px 0 #000', display: 'flex', placeItems: 'end', gap: 5, borderRadius: 5 }}>
       <Popover width={350} position="bottom" shadow="md" radius={20} offset={12}>
         <Popover.Target>
           <Button size='sm' m={0} variant='filled' color='#fff' style={{ border: '1px solid #B21222' }}><Image src={filterIcon} /></Button>
@@ -80,7 +80,7 @@ const Header = ({setCompanies}) => {
       </Popover>
       <Button size='sm' m={0} w={80} variant='filled' color='#b21222' onClick={handleSearchClick}>{t('بحث')}</Button>
       <TextInput
-        label={<Text mb={8} size='sm' c="#B21222" fw={800}>{t('أكثر من 190 شركة بانتظارك ماذا تنتظر ابدأ الأن')} !</Text>}
+        label={<Text mb={8} size='md' c="#B21222" fw={800}>{t('أكثر من 190 شركة بانتظارك ماذا تنتظر ابدأ الأن')} !</Text>}
         mt="sm"
         placeholder={t('ابحث عن الشركة التي تريدها')}
         style={{ width: '100%', textAlign: 'start', direction: 'rtl', marginTop: 0 }}

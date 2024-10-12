@@ -1,13 +1,10 @@
-import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Button } from '@mantine/core';
+
+import { Drawer, Button, GridCol } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { Flex,Grid ,Image,Group} from '@mantine/core';
 import LanguageSwitcher from './languageSwitcher';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import vector from "../../assets/vectors/Vector.png";
 import { useLocation } from "react-router-dom";
-import profile from "../../assets/vectors/Vector1.png";
 import notification from "../../assets/vectors/Vector (7).png";
 
 const DrawerNav = ({opened,close}) => {
@@ -17,6 +14,18 @@ const DrawerNav = ({opened,close}) => {
   const navigate = useNavigate();
   const {t} = useTranslation();
 
+  const company = JSON.parse(localStorage.getItem("company"));
+  const comImg = company && company.data.company.logo;
+
+  const researcher = JSON.parse(localStorage.getItem("researcher"));
+  const resImg = researcher && researcher.data.researcher.image;
+
+  let image = null;
+  if (comImg) {
+    image = comImg;
+  } else {
+    image = resImg;
+  }
   return (
     <>
       <Drawer
@@ -27,8 +36,10 @@ const DrawerNav = ({opened,close}) => {
       >
      <Grid>
           {location.pathname === "/" || location.pathname === "/login" ? (
-            <Grid>
+            <>
+            <GridCol >
               <Button
+              fullWidth
                 variant="outline"
                 color="#B21222"
                 size="md"
@@ -38,7 +49,10 @@ const DrawerNav = ({opened,close}) => {
               >
                 {t("دخول")}
               </Button>
+              </GridCol>
+              <GridCol>
               <Button
+              fullWidth
                 variant="filled"
                 color="#B21222"
                 size="md"
@@ -48,57 +62,65 @@ const DrawerNav = ({opened,close}) => {
               >
                 {t("سجل مجاناً")}
               </Button>
-            </Grid>
+            </GridCol>
+            </>
           ) : (
             <>
-                  <Group gap={0} style={{display:'grid'}}>
-                    <Button
-                      fz={18}
-                      fw={700}
-                      onClick={() => navigate("/profile")}
-                    >
+                  <Grid mt={30} gutter={20}>
+                    <GridCol mb={30}>
                       <Image
-                        src={profile}
                         radius="50%"
+                        w={80}
+                        src={image}
                         style={{
                           cursor: "pointer",
                           border: "1px solid red",
-                          width: "30px",
-                          padding: 5,
+                          boxShadow:'0 3px 6px 0px #000'
                         }}
-                      />
-                      </Button>    
+                      /> 
+                  </GridCol>
+                  <GridCol>
+                    <Button fullWidth variant='outline' color="#B21222">
+                      الاشعارات
                       <Image
-                        src={notification}
+                      mx={10}
+                        radius='50%'
                         w={20}
+                        src={notification}
                         style={{ cursor: "pointer" }}
                       />
-                  </Group>
-                  <Group>
+                    </Button>
+                    </GridCol>
+                    <GridCol mt={80}>
                     <Button
+                    fullWidth
+                    variant='filled' color="#B21222"
                       fz={18}
                       fw={700}
                       onClick={() => navigate("/gabs")}
                     >
                       {t("الثغرات المكتشفة")}
                       </Button>
-
+                      </GridCol>
+                      <GridCol>
                     <Button
+                    fullWidth
+                    variant='filled' color="#B21222"
                       fz={18}
                       fw={700}
                       onClick={() => navigate("/home")}
                     >
                       {t("الصفحة الرئيسية")}
                     </Button>
-                  </Group>
+                    </GridCol>
+                    </Grid>
             </>
           )}
-          <Flex align="center">
-          <LanguageSwitcher />
-            <Link to="/home">
-              <Image src={vector} width={100} p={10} />
-            </Link>
-          </Flex>
+          <Grid mt={20} >
+          <GridCol>
+             <LanguageSwitcher />
+          </GridCol>
+          </Grid>
           </Grid>
       </Drawer>
     </>

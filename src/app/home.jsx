@@ -32,12 +32,11 @@ const Home = () => {
 
   const researchers = data.researcher;
 
-
   return (
     <>
       {progress && <Progress />}
       {company ? (
-        <Container p={20} fluid>
+        <Container p={20} fluid mih="100vh">
           <Diagrams data={data} />
           <Researchers researchers={researchers} />
         </Container>

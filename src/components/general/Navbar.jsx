@@ -48,11 +48,11 @@ const Navbar = () => {
           h="auto"
           style={{ paddingInline: 0, position: "relative", top: 0, right: 0 }}
         >
-          <Flex justify='space-between' align='center'>
-          <Burger size="md" lineSize={2} hiddenFrom="sm" onClick={open} />
-          <Link to="/home">
-                <Image src={vector} w={90} p={5} hiddenFrom="sm"/>
-          </Link>
+          <Flex justify="space-between" align="center">
+            <Burger size="md" lineSize={2} hiddenFrom="sm" onClick={open} />
+            <Link to="/home">
+              <Image src={vector} w={90} p={5} hiddenFrom="sm" />
+            </Link>
           </Flex>
           <Container
             visibleFrom="sm"
@@ -156,7 +156,7 @@ const Navbar = () => {
                 </Tabs>
               </>
             )}
-            <Flex align="center">
+            <Flex align="center" gap={30}>
               <LanguageSwitcher />
               <Link to="/home">
                 <Image src={vector} width={100} p={10} />

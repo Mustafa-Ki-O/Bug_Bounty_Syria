@@ -8,8 +8,7 @@ import { useEffect, useState } from "react";
 // import { fetchReports } from "../../api/copmany/fetchReports";
 import useFetchReports from "../useMutation/company/useFetchReports";
 
-
-const GapsTableCompany = ({setProgress}) => {
+const GapsTableCompany = ({ setProgress }) => {
   const { t } = useTranslation();
 
   const [opened, { open, close }] = useDisclosure(false);

@@ -1,4 +1,17 @@
-import {Container,Stack,Image, Grid,Text,TextInput,Button,Textarea,Group,Flex,Select,FileButton} from "@mantine/core";
+import {
+  Container,
+  Stack,
+  Image,
+  Grid,
+  Text,
+  TextInput,
+  Button,
+  Textarea,
+  Group,
+  Flex,
+  Select,
+  FileButton,
+} from "@mantine/core";
 // import Progress from "../general/Progress";
 import { useForm } from "@mantine/form";
 import { useEffect, useState } from "react";
@@ -20,14 +33,14 @@ import { useTranslation } from "react-i18next";
 import useFetchProfile from "../useMutation/company/useFetchProfile";
 import useUpdateProfile from "../useMutation/company/useUpdateProfile";
 
-const InfoCompany = ({setProgress}) => {
+const InfoCompany = ({ setProgress }) => {
   const { t } = useTranslation();
   const [selectedLogo, setSelectedLogo] = useState(null);
   // const [progress, setProgress] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const [openLogout, setOpenLogout] = useState(false);
   const navigate = useNavigate();
-  const [isSubmitted,setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { fetchProfile, isLoadingFetch } = useFetchProfile();
 
   const schema = yup.object().shape({
@@ -52,12 +65,12 @@ const InfoCompany = ({setProgress}) => {
   }, []);
 
   useEffect(() => {
-    console.log('isload')
-    setProgress( isLoadingFetch);
-  }, [ isLoadingFetch]);
+    console.log("isload");
+    setProgress(isLoadingFetch);
+  }, [isLoadingFetch]);
 
-  const {update,isLoading} = useUpdateProfile(setCompany);
-  
+  const { update, isLoading } = useUpdateProfile(setCompany);
+
   const form = useForm({
     mode: "uncontrolled",
     validateInputOnChange: false,
@@ -97,15 +110,15 @@ const InfoCompany = ({setProgress}) => {
       const values = form.getValues();
       const formData = new FormData();
       Object.keys(values).forEach((key) => {
-        if (key !== 'logo') {
+        if (key !== "logo") {
           formData.append(key, values[key]);
         }
       });
       if (selectedLogo) {
         formData.append("logo", selectedLogo);
       }
-      setIsSubmitted(true)
-       update(formData);
+      setIsSubmitted(true);
+      update(formData);
     }
 
     const validated = form.validate();
@@ -117,10 +130,10 @@ const InfoCompany = ({setProgress}) => {
   };
 
   useEffect(() => {
-    if(isSubmitted){
-     setProgress(isLoading)
+    if (isSubmitted) {
+      setProgress(isLoading);
     }
-   },[isLoading])
+  }, [isLoading]);
 
   return (
     <>
@@ -130,7 +143,13 @@ const InfoCompany = ({setProgress}) => {
         style={{ margin: "auto", position: "relative" }}
         my={10}
       >
-        {<ChangePasswordModalCompany opened={opened} close={close} setProgress={setProgress}/>}
+        {
+          <ChangePasswordModalCompany
+            opened={opened}
+            close={close}
+            setProgress={setProgress}
+          />
+        }
         {
           <LogoutModalCompany
             openLogout={openLogout}
@@ -144,7 +163,8 @@ const InfoCompany = ({setProgress}) => {
               <div style={{ position: "relative", margin: "auto" }}>
                 <Image
                   src={company?.logo}
-                  w={100} h={100}
+                  w={100}
+                  h={100}
                   radius={50}
                   style={{
                     border: "1px solid red",

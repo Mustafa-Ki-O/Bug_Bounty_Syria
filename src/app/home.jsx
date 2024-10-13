@@ -9,7 +9,6 @@ import useFetchHome from "../components/useMutation/company/useFetchHome.jsx";
 import useFetchHomeResearcher from "../components/useMutation/researcher/useFetchHomeResearcher.jsx";
 import Progress from "../components/general/Progress.jsx";
 
-
 const Home = () => {
   const company = localStorage.getItem("company");
   const [progress, setProgress] = useState(false);

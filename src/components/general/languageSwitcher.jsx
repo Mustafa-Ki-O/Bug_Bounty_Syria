@@ -1,4 +1,7 @@
 import { useTranslation } from "react-i18next";
+import syria from "../../assets/vectors/syria_round_icon_64.png";
+import england from "../../assets/vectors/united_kingdom_round_icon_64.png";
+import { Select } from "@mantine/core";
 
 const LanguageSwitcher = () => {
   const { t, i18n } = useTranslation();
@@ -9,21 +12,27 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <select
-      onChange={handleLanguageChange}
-      style={{
-        padding: 5,
-        borderRadius: 5,
-        marginTop: 4,
-      }}
-    >
-      <option value="ar" selected={lang === "ar"}>
-        {t("Arabic")}
-      </option>
-      <option value="en" selected={lang === "en"}>
-        {t("English")}
-      </option>
-    </select>
+    <>
+      <select
+        onChange={handleLanguageChange}
+        style={{
+          padding: 5,
+          borderRadius: 10,
+          marginTop: 4,
+          border: "2px solid #B21222",
+          outline: "none",
+          backgroundColor: "transparent",
+          color: "#B21222",
+        }}
+      >
+        <option value="ar" selected={lang === "ar"}>
+          {t("Arabic")}
+        </option>
+        <option value="en" selected={lang === "en"}>
+          {t("English")}
+        </option>
+      </select>
+    </>
   );
 };
 

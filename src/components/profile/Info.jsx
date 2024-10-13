@@ -112,7 +112,7 @@ const Info = ({setProgress}) => {
       <Container className="profile" p={20} style={{ margin: 'auto', position: 'relative' }} my={10}>
         {<ChangePasswordModal opened={opened} close={close} setProgress={setProgress}/>}
         {<LogoutModal openLogout={openLogout} setOpenLogout={setOpenLogout} setProgress={setProgress} />}
-        <Stack p={50} w='80%' m='auto' justify="center" align="center">
+        <Stack p={50} w='100%' m='auto' justify="center" align="center">
         <form
             onSubmit={form.onSubmit(handleSubmit)}
             style={{ width: "100%", marginTop: 20 }}
@@ -131,7 +131,7 @@ const Info = ({setProgress}) => {
                   right: 0
                 }}
               >
-                {(props) => <Image src={updateImg} {...props} />}
+                {(props) => <Image  src={updateImg} {...props} />}
               </FileButton>
              </div>
               <Image src={logout} w={20} style={{ position: 'absolute', alignSelf: 'flex-start', cursor: 'pointer' }}
@@ -141,7 +141,7 @@ const Info = ({setProgress}) => {
           </Stack>
           
             <Grid justify="center" gutter={25} dir="rtl">
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل الاسم الكامل *")}
                   rightSection={<img src={person} width="20px" />}
@@ -149,7 +149,7 @@ const Info = ({setProgress}) => {
                   {...form.getInputProps("name")}
                 />
               </Grid.Col>
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل البريد الإلكتروني *")}
                   rightSection={<img src={message} width="20px" />}
@@ -157,7 +157,7 @@ const Info = ({setProgress}) => {
                   {...form.getInputProps("email")}
                 />
               </Grid.Col>
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل رقم الهاتف *")}
                   rightSection={<img src={phone} width="20px" />}
@@ -165,7 +165,7 @@ const Info = ({setProgress}) => {
                   {...form.getInputProps("phone")}
                 />
               </Grid.Col>
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
               <TextInput
                   disabled
                   key={form.key("code")}
@@ -185,7 +185,7 @@ const Info = ({setProgress}) => {
           <Text size="sm" td='underline' mt={20} fw={700} ta='right' style={{ cursor: 'pointer' }} onClick={open}>
             {t("تغيير كلمة المرور")}
           </Text>
-          <Button type="submit" w='30%' size="sm" variant="filled" color='#B21222'>{t("حفظ التغييرات")}</Button>
+          <Button type="submit" mt={25} w='30%' miw='120px' size="sm" variant="filled" color='#B21222'>{t("حفظ التغييرات")}</Button>
           </form>
         </Stack>
       </Container>

@@ -97,12 +97,13 @@ function SendReportModal({ opened, close, uuid ,setProgress}) {
               <FileInput
                  style={{ direction: "rtl" }}
                  radius="md"
+                 w={250}
                  key={form.key('report_file')}
                  description="Input description"
                  rightSection={<img src={sendIcon} width={20}/>}
                  {...form.getInputProps('report_file')}
                   />
-              <Group>
+              <Group w='100%' justify="space-evenly">
                 <Button onClick={close} variant="outline" color="#B21222">
                {t("الغاء الارسال")}
                 </Button>

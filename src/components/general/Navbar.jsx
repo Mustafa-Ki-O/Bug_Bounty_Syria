@@ -46,7 +46,7 @@ const Navbar = () => {
           bg="#F9F9F9"
           p={0}
           h="auto"
-          style={{ paddingInline: 0, position: "relative", top: 0, right: 0 }}
+          style={{ paddingInline: 0, position: "relative", top: 0, right: 0,boxShadow:'0 2px 8px 0 #000' }}
         >
           <Flex justify='space-between' align='center'>
           <Burger size="md" lineSize={2} hiddenFrom="sm" onClick={open} />
@@ -63,7 +63,7 @@ const Navbar = () => {
               alignItems: "center",
               width: "100%",
               boxSizing: "border-box",
-              boxShadow: "0 3px 10px #000",
+              boxShadow: "0 3px 10px 0 #000",
             }}
           >
             {location.pathname === "/" ||

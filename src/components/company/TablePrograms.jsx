@@ -27,9 +27,9 @@ function TablePrograms({ data,setProgress }) {
       <Button
             color="#B21222"
             ml={10}
-            w={140}
             variant="outline"
             fw={700}
+            dir="ltr"
             onClick={()=>{
                 open();
                 setProductId(pro.uuid)

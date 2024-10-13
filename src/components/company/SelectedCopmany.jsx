@@ -10,13 +10,12 @@ const SelectedCompany = ({selectedCompany}) => {
 
   const {uuid,logo,name,description,type,domain,employess_count}  = selectedCompany
 
-    
     return(
         <Group p={0}>
-          <Container w={600} h={400} >
+          <Container visibleFrom="sm" w={600} h={400} >
             <ImageCompany />
           </Container>
-          <Container  w={600} h={400} p={0} >
+          <Container  w={600}  p={0} >
             <InfoCompany 
             id={uuid}
             logo={logo}

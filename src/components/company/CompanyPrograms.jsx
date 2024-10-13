@@ -9,7 +9,7 @@ const CompanyPrograms = ({companyPrograms,setProgress}) => {
   
   return (
     <>
-      <Text size="md" fw={700} c="#1D1D1B" mb={20} mr={20} ta="end">
+      <Text size="md" fw={700} c="#1D1D1B" mt={40} mr={20} ta="end">
        {t("برامج الشركة")}
       </Text>
 

@@ -1,5 +1,4 @@
-import { Container, Stack, Image, Grid, Text, FileButton, TextInput, Button, Textarea, Group } from "@mantine/core"
-import Progress from "../general/Progress"
+import { Container, Stack, Image, Grid, Text, FileButton, TextInput, Button, Textarea, Group,Tooltip } from "@mantine/core"
 import { useForm } from "@mantine/form"
 import { useEffect, useState } from "react"
 import { yupResolver } from "mantine-form-yup-resolver";
@@ -15,7 +14,6 @@ import ChangePasswordModal from "./ChangePasswordModal"
 import LogoutModal from "./LogoutModal"
 import { useTranslation } from 'react-i18next';
 import useUpdateProfile from "../useMutation/researcher/useUpdateProfile";
-// import { FetchProfile } from "../../api/researcher/fetchProfile"
 import useFetchProfile from "../useMutation/researcher/useFetchProfile";
 
 const Info = ({setProgress}) => {
@@ -112,7 +110,7 @@ const Info = ({setProgress}) => {
       <Container className="profile" p={20} style={{ margin: 'auto', position: 'relative' }} my={10}>
         {<ChangePasswordModal opened={opened} close={close} setProgress={setProgress}/>}
         {<LogoutModal openLogout={openLogout} setOpenLogout={setOpenLogout} setProgress={setProgress} />}
-        <Stack p={50} w='100%' m='auto' justify="center" align="center">
+        <Stack p={{lg:50,md:10,sm:0}} w='100%' m='auto' justify="center" align="center">
         <form
             onSubmit={form.onSubmit(handleSubmit)}
             style={{ width: "100%", marginTop: 20 }}
@@ -134,8 +132,10 @@ const Info = ({setProgress}) => {
                 {(props) => <Image  src={updateImg} {...props} />}
               </FileButton>
              </div>
+             <Tooltip label="Log-out" color="#b21222">
               <Image src={logout} w={20} style={{ position: 'absolute', alignSelf: 'flex-start', cursor: 'pointer' }}
                 onClick={() => setOpenLogout(true)} />
+                </Tooltip>
             </Group>
             <Text size="sm" fs={18} fw={700}>{t("اختر صورة جديدة")}</Text>
           </Stack>

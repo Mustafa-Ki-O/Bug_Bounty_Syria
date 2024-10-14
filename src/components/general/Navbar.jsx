@@ -78,6 +78,7 @@ const Navbar = () => {
             location.pathname === "/loginCompany" ? (
               <Group>
                 <Button
+                radius={8}
                   variant="outline"
                   color="#B21222"
                   size="md"
@@ -88,6 +89,7 @@ const Navbar = () => {
                   {t("دخول")}
                 </Button>
                 <Button
+                radius={8}
                   variant="filled"
                   color="#B21222"
                   size="md"

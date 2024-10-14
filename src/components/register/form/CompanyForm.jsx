@@ -16,14 +16,7 @@ const CompanyForm = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
-  const formData = new FormData();
-  formData.append('name', '');
-  formData.append('domain', '');
-  formData.append('type', '');
-  formData.append('employess_count', '');
-  formData.append('email', '');
-  formData.append('password', '');
-  
+
   const schema = yup.object().shape({
     name: yup.string().min(2, t("name should have at least 2 letters ")),
     domain: yup.string().min(4, t("Invalid domain ")),
@@ -33,12 +26,23 @@ const CompanyForm = () => {
     password: yup
       .string()
       .min(8, t("Password should have at least 8 letters or numbers")),
-  });
+    termsOfService:yup
+    .bool()
+    .oneOf([true], t("you must accept")),
+    });
   
   const form = useForm({
     mode: "uncontrolled",
-    validateInputOnChange: true,
-    initialValues:formData,
+    validateInputOnChange: false,
+    initialValues:{
+      name:'',
+      domain:'',
+      type:'',
+      employess_count:'',
+      email:'',
+      password:'',
+      termsOfService:''
+    },
     validate: yupResolver(schema),
   });
 
@@ -47,7 +51,9 @@ const CompanyForm = () => {
       const values = form.getValues();
       const newFormData = new FormData();
       Object.keys(values).forEach((key) => {
-        newFormData.append(key, values[key]);
+        if(key !== 'termsOfService'){
+          newFormData.append(key, values[key]);
+          }
       });
       PostCompany(newFormData);
       console.log(values);
@@ -112,7 +118,7 @@ const CompanyForm = () => {
         {...form.getInputProps("password")}
       />
     </GridCol>
-    {/* <GridCol offset={{lg:6,md:6,sm:0,xs:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
+    <GridCol offset={{lg:6,md:6,sm:0,xs:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
       <Checkbox
         key={form.key("termsOfService")}
         {...form.getInputProps("termsOfService", { type: "checkbox" })}
@@ -127,9 +133,9 @@ const CompanyForm = () => {
         }
         style={{ marginBottom: 15,direction:'rtl' }}
       />
-    </GridCol> */}
+    </GridCol>
   </Grid>
-  <Grid >
+  <Grid mt={20} >
     <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button
           fullWidth
@@ -140,6 +146,8 @@ const CompanyForm = () => {
         >
           {t(" تسجيل الدخول كباحث")}
         </Button>
+        </GridCol>
+        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button
           fullWidth
           size='md'
@@ -150,7 +158,7 @@ const CompanyForm = () => {
           {t("تسجيل الدخول كشركة")}
         </Button>
         </GridCol>
-        <GridCol span={{ lg:6 , xs:12, sm:12, md:6 }}>
+        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button fullWidth  size="md" type="submit" variant="filled" color="#B21222">
           {t("انشاء حساب")}
         </Button>

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { UnstyledButton, Menu, Image, Group } from "@mantine/core";
+import { UnstyledButton, Menu, Image, Group, Tooltip } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
-// import images from "./images";
 import classes from "../../assets/css/LanguagePicker.module.css";
 import syria from "../../assets/vectors/syria_round_icon_64.png";
 import england from "../../assets/vectors/united_kingdom_round_icon_64.png";
@@ -9,7 +8,6 @@ import { useTranslation } from "react-i18next";
 
 export function LanguagePicker() {
   const { t, i18n } = useTranslation();
-  const lang = localStorage.getItem("lang");
 
   const handleLanguageChange = (item) => {
     setSelected(item);
@@ -27,12 +25,14 @@ export function LanguagePicker() {
 
   const items = data.map((item) => (
     <Menu.Item
-      leftSection={<Image src={item.image} width={18} height={18} />}
       onClick={() => handleLanguageChange(item)}
       key={item.label}
       value={item.value}
+      className={classes.menuItem}
     >
-      {item.label}
+      <Tooltip label={item.label} color="#b21222">
+        <Image src={item.image} width={18} height={18} />
+      </Tooltip>
     </Menu.Item>
   ));
 
@@ -43,15 +43,16 @@ export function LanguagePicker() {
       radius="md"
       width="target"
       withinPortal
+      p={10}
     >
       <Menu.Target>
         <UnstyledButton
+          w="fit-content"
           className={classes.control}
           data-expanded={opened || undefined}
         >
           <Group gap="xs">
             <Image src={selected.image} width={22} height={22} />
-            <span className={classes.label}>{selected.label}</span>
           </Group>
           <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
         </UnstyledButton>

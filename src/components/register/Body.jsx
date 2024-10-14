@@ -1,4 +1,4 @@
-import { Container, Button, Grid,GridCol ,Select} from "@mantine/core";
+import { Container, Button, Grid,GridCol ,Select, Stack,Flex} from "@mantine/core";
 import Header from "./Header";
 import { useState } from "react";
 import ResearcherForm from "./form/ResearcherForm";
@@ -16,51 +16,33 @@ const Body = () => {
 
   return (
     <Container
-      style={{
-        margin: "auto",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        width: "100%",
-        padding: 50,
-        boxSizing: "border-box",
-        gap: 15,
-      }}
+    fluid
+    w='65%'
+    p={40}
+    m='auto'
     >
-      <Container
-        fluid
-        style={{
-          backgroundColor: "#F9F9F9",
-          borderRadius: 6,
-          padding: 30,
-          boxShadow: "0px 2px 7px #000",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+        <Stack w='100%' bg="#F9F9F9" p={30} style={{borderRadius:10,boxShadow:"0px 2px 6px 0 #000"}}>
         <Header />
-           <Grid visibleFrom="md">
-           <GridCol span={6}  mt={30}>
+           <Flex visibleFrom="md" w='80%' gap='1.25rem' justify='center' m="auto">
              <Button
                fullWidth
+               size="md"
                variant={active === '0' ? "filled" : "outline"}
                color="#B21222"
                onClick={() => handleClick('0')}
              >
                {t("التسجيل كشركة جديدة")}
              </Button>
-           </GridCol>
-           <GridCol span={6} mt={30}>
              <Button
                fullWidth
+               size="md"
                variant={active === '1' ? "filled" : "outline"}
                color="#B21222"
                onClick={() => handleClick('1')}
              >
                {t("التسجيل كباحث أمني")}
              </Button>
-           </GridCol>
-         </Grid>
+         </Flex>
          <Grid my={15} hiddenFrom="md">
           <GridCol span={12} dir="rtl">
            <Select
@@ -76,7 +58,7 @@ const Body = () => {
            </GridCol>
          </Grid>
         {active === '0' ? <CompanyForm /> : <ResearcherForm />}
-      </Container>
+        </Stack>
     </Container>
   );
 };

@@ -129,7 +129,7 @@ const CompanyForm = () => {
       />
     </GridCol> */}
   </Grid>
-  <Grid >
+  <Grid mt={20} >
     <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button
           fullWidth
@@ -140,6 +140,8 @@ const CompanyForm = () => {
         >
           {t(" تسجيل الدخول كباحث")}
         </Button>
+        </GridCol>
+        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button
           fullWidth
           size='md'
@@ -150,7 +152,7 @@ const CompanyForm = () => {
           {t("تسجيل الدخول كشركة")}
         </Button>
         </GridCol>
-        <GridCol span={{ lg:6 , xs:12, sm:12, md:6 }}>
+        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button fullWidth  size="md" type="submit" variant="filled" color="#B21222">
           {t("انشاء حساب")}
         </Button>

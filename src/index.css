@@ -11,7 +11,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+button:focus{
+  display: none;
+}
+button:hover{
+  border-color: #b21222 !important;
+}
 a {
   font-weight: 500;
   color: #646cff;

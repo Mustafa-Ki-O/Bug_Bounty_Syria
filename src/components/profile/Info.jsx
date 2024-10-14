@@ -76,6 +76,7 @@ const Info = ({ setProgress }) => {
         phone: researcher.phone,
         code: researcher.code,
         image: researcher.image,
+        description: researcher.description,
       });
     }
   }, [researcher]);

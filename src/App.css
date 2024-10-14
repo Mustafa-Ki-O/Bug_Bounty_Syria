@@ -6,6 +6,12 @@
   text-align: center;
   position: relative;
 }
+.mantine-Button-root:focus {
+  outline: none;
+}
+.mantine-Button-root:hover {
+  border-color: #b21222 !important;
+}
 p{
   color: #1D1D1B #5B0F0E #990000 #A60911 #B21222 #CDCDCD #E3E3E3 #F9F9F9;
 }

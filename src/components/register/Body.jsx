@@ -27,6 +27,8 @@ const Body = () => {
              <Button
                fullWidth
                size="md"
+               style={{ boxShadow: active === '0' ? '0 2px 8px 0 #b21222' : undefined }}
+               radius='15px 10px 10px 10px'
                variant={active === '0' ? "filled" : "outline"}
                color="#B21222"
                onClick={() => handleClick('0')}
@@ -36,6 +38,8 @@ const Body = () => {
              <Button
                fullWidth
                size="md"
+               style={{ boxShadow: active === '1' ? '0 2px 5px 0 #b21222' : undefined }}
+               radius=' 10px 15px 10px 10px'
                variant={active === '1' ? "filled" : "outline"}
                color="#B21222"
                onClick={() => handleClick('1')}

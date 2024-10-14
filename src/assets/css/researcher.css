@@ -12,3 +12,11 @@
     border-top: 1px solid #000;
 }
  */
+ .select::placeholder{
+    text-align: start;
+
+}
+.select{
+    text-align: start !important;
+    margin-top: 0 !important;
+}

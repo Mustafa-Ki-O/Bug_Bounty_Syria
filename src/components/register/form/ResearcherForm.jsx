@@ -14,11 +14,7 @@ const ResearcherForm = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
-  const formData = new FormData();
-  formData.append('name', '');
-  formData.append('phone', '');
-  formData.append('email', '');
-  formData.append('password', '');
+
 
   const schema = yup.object().shape({
     name: yup.string().min(2, t("name should have at least 2 letters ")),
@@ -27,12 +23,20 @@ const ResearcherForm = () => {
     password: yup
       .string()
       .min(8, t("Password should have at least 8 letters or numbers")),
-  });
+      termsOfService:yup.bool()
+      .oneOf([true], t("you must accept")),
+    });
 
   const form = useForm({
     mode: "uncontrolled",
-    validateInputOnChange: true,
-    initialValues: formData,
+    validateInputOnChange: false,
+    initialValues: {
+      name:'',
+      email:'',
+      phone:'',
+      password:'',
+      termsOfService:''
+    },
     validate: yupResolver(schema),
   });
 
@@ -41,11 +45,12 @@ const ResearcherForm = () => {
       const values = form.getValues();
       const newFormData = new FormData();
       Object.keys(values).forEach((key) => {
-        newFormData.append(key, values[key]);
+        if(key !== 'termsOfService'){
+          newFormData.append(key, values[key]);
+          }
       });
       PostResearcher(newFormData);
       console.log(values);
-      // localStorage.setItem("researcher", JSON.stringify(values));
       navigate("/checkcoderegister"); 
     }
   
@@ -94,7 +99,7 @@ const ResearcherForm = () => {
         {...form.getInputProps("password")}
       />
     </GridCol>
-    {/* <GridCol offset={{lg:6,md:6,sm:0,xs:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
+    <GridCol offset={{lg:6,md:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
       <Checkbox
         key={form.key("termsOfService")}
         {...form.getInputProps("termsOfService", { type: "checkbox" })}
@@ -109,7 +114,7 @@ const ResearcherForm = () => {
         }
         style={{ marginBottom: 15,direction:'rtl' }}
       />
-    </GridCol> */}
+    </GridCol>
   </Grid>
   <Grid mt={20}>
     <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>

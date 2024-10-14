@@ -1,4 +1,4 @@
-import {Checkbox,TextInput,Button,Group,Anchor,PasswordInput,Grid,GridCol} from "@mantine/core";
+import { TextInput, Button, PasswordInput, Grid, GridCol } from "@mantine/core";
 import person from "../../../assets/vectors/Vector1.png";
 import message from "../../../assets/vectors/Vector2.png";
 import phone from "../../../assets/vectors/Vector3.png";
@@ -8,13 +8,21 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "mantine-form-yup-resolver";
 import * as yup from "yup";
 import { useForm } from "@mantine/form";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const ResearcherForm = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+<<<<<<< HEAD
+  const formData = new FormData();
+  formData.append("name", "");
+  formData.append("phone", "");
+  formData.append("email", "");
+  formData.append("password", "");
+=======
 
+>>>>>>> 0f7aa52347165e646f75dfabe8e04a4a77758446
 
   const schema = yup.object().shape({
     name: yup.string().min(2, t("name should have at least 2 letters ")),
@@ -51,9 +59,14 @@ const ResearcherForm = () => {
       });
       PostResearcher(newFormData);
       console.log(values);
+<<<<<<< HEAD
+      // localStorage.setItem("researcher", JSON.stringify(values));
+      navigate("/checkcoderegister");
+=======
       navigate("/checkcoderegister"); 
+>>>>>>> 0f7aa52347165e646f75dfabe8e04a4a77758446
     }
-  
+
     const validated = form.validate();
 
     if (validated) {
@@ -63,6 +76,45 @@ const ResearcherForm = () => {
   };
 
   return (
+<<<<<<< HEAD
+    <form
+      onSubmit={form.onSubmit(handleSubmit)}
+      style={{ width: "100%", marginTop: 20 }}
+    >
+      <Grid gutter="lg" justify="center" dir="rtl">
+        <GridCol span={{ lg: 6, xs: 12, sm: 12, md: 12 }}>
+          <TextInput
+            placeholder={t("أدخل الاسم الكامل *")}
+            rightSection={<img src={person} width="20px" />}
+            key={form.key("name")}
+            {...form.getInputProps("name")}
+          />
+        </GridCol>
+        <GridCol span={{ lg: 6, xs: 12, sm: 12, md: 12 }}>
+          <TextInput
+            placeholder={t("أدخل البريد الإلكتروني *")}
+            rightSection={<img src={message} width="20px" />}
+            key={form.key("email")}
+            {...form.getInputProps("email")}
+          />
+        </GridCol>
+        <GridCol span={{ lg: 6, xs: 12, sm: 12, md: 12 }}>
+          <TextInput
+            placeholder={t("أدخل رقم الهاتف *")}
+            rightSection={<img src={phone} width="20px" />}
+            key={form.key("phone")}
+            {...form.getInputProps("phone")}
+          />
+        </GridCol>
+        <GridCol span={{ lg: 6, xs: 12, sm: 12, md: 12 }}>
+          <PasswordInput
+            placeholder={t("أدخل كلمة المرور *")}
+            key={form.key("password")}
+            {...form.getInputProps("password")}
+          />
+        </GridCol>
+        {/* <GridCol offset={{lg:6,md:6,sm:0,xs:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
+=======
 <form
   onSubmit={form.onSubmit(handleSubmit)}
   style={{ width: "100%", marginTop: 20 }}
@@ -100,6 +152,7 @@ const ResearcherForm = () => {
       />
     </GridCol>
     <GridCol offset={{lg:6,md:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
+>>>>>>> 0f7aa52347165e646f75dfabe8e04a4a77758446
       <Checkbox
         key={form.key("termsOfService")}
         {...form.getInputProps("termsOfService", { type: "checkbox" })}
@@ -114,6 +167,21 @@ const ResearcherForm = () => {
         }
         style={{ marginBottom: 15,direction:'rtl' }}
       />
+<<<<<<< HEAD
+    </GridCol> */}
+      </Grid>
+      <Grid mt={20}>
+        <GridCol span={{ lg: 4, xs: 12, sm: 12, md: 4 }}>
+          <Button
+            fullWidth
+            size="md"
+            variant="outline"
+            color="#B21222"
+            onClick={() => navigate("/login")}
+          >
+            {t(" تسجيل الدخول كباحث")}
+          </Button>
+=======
     </GridCol>
   </Grid>
   <Grid mt={20}>
@@ -127,25 +195,32 @@ const ResearcherForm = () => {
         >
           {t(" تسجيل الدخول كباحث")}
         </Button>
+>>>>>>> 0f7aa52347165e646f75dfabe8e04a4a77758446
         </GridCol>
-        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
-        <Button
-          fullWidth
-          size='md'
-          variant="outline"
-          color="#B21222"
-          onClick={() => navigate("/loginCompany")}
-        >
-          {t("تسجيل الدخول كشركة")}
-        </Button>
+        <GridCol span={{ lg: 4, xs: 12, sm: 12, md: 4 }}>
+          <Button
+            fullWidth
+            size="md"
+            variant="outline"
+            color="#B21222"
+            onClick={() => navigate("/loginCompany")}
+          >
+            {t("تسجيل الدخول كشركة")}
+          </Button>
         </GridCol>
-        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
-        <Button fullWidth  size="md" type="submit" variant="filled" color="#B21222">
-          {t("انشاء حساب")}
-        </Button>
-    </GridCol>
-    </Grid>
-</form>
+        <GridCol span={{ lg: 4, xs: 12, sm: 12, md: 4 }}>
+          <Button
+            fullWidth
+            size="md"
+            type="submit"
+            variant="filled"
+            color="#B21222"
+          >
+            {t("انشاء حساب")}
+          </Button>
+        </GridCol>
+      </Grid>
+    </form>
   );
 };
 

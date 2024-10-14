@@ -14,6 +14,7 @@ import ReSetPassword from "../app/auth/ReSetPassword"
 import AddProgram from "../app/AddProgram"
 import LoginCompany from "../app/auth/LoginCompany"
 import ChangePassword from "../app/auth/ChangePassword"
+import Researcher from "../app/Researcher"
 
 const route = createBrowserRouter([
     {
@@ -63,15 +64,15 @@ const route = createBrowserRouter([
               path: "gabs",
               element: <Gaps />,
             },
+            {
+              path:'researcher/:id',
+              element:<Researcher/>
+            },
 
             {
                 path: "company/:id",
                 element: <Company />,
            }, 
-           {
-               path:'/:id',
-               element: <Company/>
-           },
            {
                path:'profile',
                element: <Profile/>

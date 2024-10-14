@@ -1,9 +1,6 @@
 import { Group,Container } from "@mantine/core"
 import InfoCompany from "./InfoCompany"
 import ImageCompany from "./ImageCompany"
-// import data from '../home/data.json'
-// import { useEffect,useState } from "react";
-// import { FetchCompanyProfile } from "../../api/researcher/fetchCompanyProfile";
 
 
 const SelectedCompany = ({selectedCompany}) => {

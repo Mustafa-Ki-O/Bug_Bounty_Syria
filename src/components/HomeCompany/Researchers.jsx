@@ -17,6 +17,7 @@ const Researchers = ({researchers}) => {
             researchers.map((res, index) => (
               <Grid.Col span={{lg:3 , md:4,sm:6,xs:12 }} key={index}>
                 <ResearcherCard
+                  id={res.uuid}
                   name={res.name}
                   rate={res.rate}
                   description={res.description}

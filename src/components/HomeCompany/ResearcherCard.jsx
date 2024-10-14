@@ -1,10 +1,12 @@
 import { Card, Image, Text, Button, Group, Stack } from "@mantine/core";
 import star from "../../assets/vectors/star.png";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-const ResearcherCard = ({ name, rate, description, image }) => {
+const ResearcherCard = ({id, name, rate, description, image }) => {
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
   return (
     <Card
       shadow="sm"
@@ -42,6 +44,7 @@ const ResearcherCard = ({ name, rate, description, image }) => {
           radius="md"
           align="flex-end"
           fw={800}
+          onClick={() => navigate(`/researcher/${id}`)}
         >
           {t("قراءة المزيد")}
         </Button>

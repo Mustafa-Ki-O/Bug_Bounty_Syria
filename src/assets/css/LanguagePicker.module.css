@@ -41,3 +41,10 @@
     transform: rotate(180deg);
   }
 }
+
+.menuItem {
+  transition: 0.3s;
+}
+.menuItem:hover {
+  background-color: #b21222;
+}

@@ -30,7 +30,7 @@ export function LanguagePicker() {
       value={item.value}
       className={classes.menuItem}
     >
-      <Tooltip label={item.label} color="#b21222">
+      <Tooltip label={item.label} color="#b21222" position="right" offset={15}>
         <Image src={item.image} width={18} height={18} />
       </Tooltip>
     </Menu.Item>

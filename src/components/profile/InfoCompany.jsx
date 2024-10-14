@@ -11,7 +11,6 @@ import {
   Flex,
   Select,
   FileButton,
-  Tooltip,
 } from "@mantine/core";
 // import Progress from "../general/Progress";
 import { useForm } from "@mantine/form";
@@ -185,18 +184,16 @@ const InfoCompany = ({ setProgress }) => {
                   {(props) => <Image src={updateImg} {...props} />}
                 </FileButton>
               </div>
-              <Tooltip label="Log-out" color="#b21222">
-                <Image
-                  src={logout}
-                  w={20}
-                  style={{
-                    position: "absolute",
-                    alignSelf: "flex-start",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setOpenLogout(true)}
-                />
-              </Tooltip>
+              <Image
+                src={logout}
+                w={20}
+                style={{
+                  position: "absolute",
+                  alignSelf: "flex-start",
+                  cursor: "pointer",
+                }}
+                onClick={() => setOpenLogout(true)}
+              />
             </Group>
             <Text size="sm" fs={18} fw={700}>
               {t("اختر صورة جديدة")}

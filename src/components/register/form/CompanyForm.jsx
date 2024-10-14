@@ -138,6 +138,7 @@ const CompanyForm = () => {
   <Grid mt={20} >
     <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button
+        radius={10}
           fullWidth
           size='md'
           variant="outline"
@@ -150,6 +151,7 @@ const CompanyForm = () => {
         <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
         <Button
           fullWidth
+          radius={10}
           size='md'
           variant="outline"
           color="#B21222"
@@ -159,7 +161,7 @@ const CompanyForm = () => {
         </Button>
         </GridCol>
         <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
-        <Button fullWidth  size="md" type="submit" variant="filled" color="#B21222">
+        <Button fullWidth radius={10}  size="md" type="submit" variant="filled" color="#B21222">
           {t("انشاء حساب")}
         </Button>
     </GridCol>

@@ -1,11 +1,10 @@
 import { Button, Table } from "@mantine/core";
 import styles from "../../../assets/css/gapsTable.module.css";
 import { useTranslation } from "react-i18next";
-// import { FetchReports } from "../../../api/researcher/fetchReports";
 import { useEffect, useState } from "react";
 import useFetchReports from "../../useMutation/researcher/useFetchReports";
 
-const GapsTable = ( {setProgress}) => {
+const GapsTable = ({setProgress}) => {
   const { t } = useTranslation();
   const [reports,setReports] = useState([])
   const {fetchAllReports,isLoading} = useFetchReports(setReports)

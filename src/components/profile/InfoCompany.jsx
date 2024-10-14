@@ -11,6 +11,7 @@ import {
   Flex,
   Select,
   FileButton,
+  GridCol,
 } from "@mantine/core";
 // import Progress from "../general/Progress";
 import { useForm } from "@mantine/form";
@@ -36,7 +37,6 @@ import useUpdateProfile from "../useMutation/company/useUpdateProfile";
 const InfoCompany = ({ setProgress }) => {
   const { t } = useTranslation();
   const [selectedLogo, setSelectedLogo] = useState(null);
-  // const [progress, setProgress] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const [openLogout, setOpenLogout] = useState(false);
   const navigate = useNavigate();
@@ -53,12 +53,6 @@ const InfoCompany = ({ setProgress }) => {
   });
 
   const [company, setCompany] = useState({});
-
-  // const fetchProfileData = () => {
-  //   fetchDataCompanyProfile().then((res) => {
-  //     setCompany(res.data.company);
-  //   });
-  // };
 
   useEffect(() => {
     fetchProfile(setCompany);
@@ -157,7 +151,7 @@ const InfoCompany = ({ setProgress }) => {
             setProgress={setProgress}
           />
         }
-        <Stack p={50} w="80%" m="auto" justify="center" align="center">
+        <Stack p={{lg:50,md:10,sm:0}} w="100%" m="auto" justify="center" align="center">
           <Stack w="100%" mb={30} style={{ placeItems: "center" }}>
             <Group w="100%" justify="flex-end">
               <div style={{ position: "relative", margin: "auto" }}>
@@ -204,7 +198,7 @@ const InfoCompany = ({ setProgress }) => {
             style={{ width: "100%", marginTop: 20 }}
           >
             <Grid justify="center" gutter={25} dir="rtl">
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل الاسم الكامل *")}
                   rightSection={<img src={person} width="20px" />}
@@ -212,7 +206,7 @@ const InfoCompany = ({ setProgress }) => {
                   {...form.getInputProps("name")}
                 />
               </Grid.Col>
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل البريد الإلكتروني *")}
                   rightSection={<img src={message} width="20px" />}
@@ -220,7 +214,7 @@ const InfoCompany = ({ setProgress }) => {
                   {...form.getInputProps("email")}
                 />
               </Grid.Col>
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل دومين الشركة *")}
                   rightSection={<img src={webIcon} width="20px" />}
@@ -228,7 +222,7 @@ const InfoCompany = ({ setProgress }) => {
                   {...form.getInputProps("domain")}
                 />
               </Grid.Col>
-              <Grid.Col span={6}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <Select
                   key={form.key("type")}
                   {...form.getInputProps("type")}
@@ -240,7 +234,7 @@ const InfoCompany = ({ setProgress }) => {
                   rightSection={<img src={typeicon} width="15px" />}
                 />
               </Grid.Col>
-              <Grid.Col offset={6} span={6}>
+              <Grid.Col offset={{lg:6,md:0}} span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل عدد موظفي الشركة *")}
                   rightSection={<img src={users} width="20px" />}
@@ -248,7 +242,7 @@ const InfoCompany = ({ setProgress }) => {
                   {...form.getInputProps("employess_count")}
                 />
               </Grid.Col>
-              <Grid.Col span={12}>
+              <Grid.Col span={{lg:6 ,md:12}}>
                 <Textarea
                   size="md"
                   radius="md"
@@ -260,15 +254,16 @@ const InfoCompany = ({ setProgress }) => {
             </Grid>
             <Stack>
               <Text
-                fz={10}
+                size="md"
                 td="underline"
                 fw={700}
+                mt={20}
                 style={{ alignSelf: "flex-end", cursor: "pointer" }}
                 onClick={open}
               >
                 {t("تغيير كلمة المرور")}
               </Text>
-              <Flex justify="center" gap={10}>
+              <Flex visibleFrom="sm" justify="center" gap={10}>
                 <Button
                   size="sm"
                   variant="outline"
@@ -286,6 +281,30 @@ const InfoCompany = ({ setProgress }) => {
                   {t("حفظ التغييرات")}
                 </Button>
               </Flex>
+              <Grid hiddenFrom="sm">
+                <GridCol>
+                <Button
+                fullWidth
+                  type="submit"
+                  size="sm"
+                  variant="filled"
+                  color="#B21222"
+                >
+                  {t("حفظ التغييرات")}
+                </Button>
+                </GridCol>
+                <GridCol>
+                <Button
+                fullWidth
+                  size="sm"
+                  variant="outline"
+                  color="#B21222"
+                  onClick={() => navigate("/addProgram")}
+                >
+                  {t("إضافة / حذف برنامج")}
+                </Button>
+                </GridCol>
+              </Grid>
             </Stack>
           </form>
         </Stack>

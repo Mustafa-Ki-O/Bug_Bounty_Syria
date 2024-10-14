@@ -1,7 +1,4 @@
 import { useTranslation } from "react-i18next";
-import syria from "../../assets/vectors/syria_round_icon_64.png";
-import england from "../../assets/vectors/united_kingdom_round_icon_64.png";
-import { Select } from "@mantine/core";
 
 const LanguageSwitcher = () => {
   const { t, i18n } = useTranslation();

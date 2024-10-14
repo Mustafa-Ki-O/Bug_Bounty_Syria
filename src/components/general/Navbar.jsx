@@ -13,10 +13,11 @@ import vector from "../../assets/vectors/Vector.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import notification from "../../assets/vectors/Vector (7).png";
-import LanguageSwitcher from "./languageSwitcher";
+// import LanguageSwitcher from "./languageSwitcher";
 import { useTranslation } from "react-i18next";
 import DrawerNav from "./Drawer";
 import { useDisclosure } from "@mantine/hooks";
+import { LanguagePicker } from "./languageSwitcherMantine";
 
 const Navbar = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -46,7 +47,13 @@ const Navbar = () => {
           bg="#F9F9F9"
           p={0}
           h="auto"
-          style={{ paddingInline: 0, position: "relative", top: 0, right: 0,boxShadow:'0 2px 8px 0 #000' }}
+          style={{
+            paddingInline: 0,
+            position: "relative",
+            top: 0,
+            right: 0,
+            boxShadow: "0 2px 8px 0 #000",
+          }}
         >
           <Flex justify="space-between" align="center">
             <Burger size="md" lineSize={2} hiddenFrom="sm" onClick={open} />
@@ -157,7 +164,8 @@ const Navbar = () => {
               </>
             )}
             <Flex align="center" gap={30}>
-              <LanguageSwitcher />
+              {/* <LanguageSwitcher /> */}
+              <LanguagePicker />
               <Link to="/home">
                 <Image src={vector} width={100} p={10} />
               </Link>

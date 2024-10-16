@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <>
       <AppShell >
-        <AppShell.Footer bd='none' style={{ position: 'relative',backgroundColor:'transparent',alignItems:'center',padding:'20px 40px',marginTop:20 }}>
+        <AppShell.Footer bd='none' style={{ position: 'absolute' ,bottom:0,backgroundColor:'transparent',alignItems:'center',padding:'20px 40px',marginTop:20 }}>
           <Flex visibleFrom="sm" justify='space-between'>
             <Group>
             <Image src={privacyIcon} w={20}/>

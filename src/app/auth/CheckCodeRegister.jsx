@@ -1,21 +1,24 @@
 import { Button, Container, Stack, TextInput } from "@mantine/core";
 import * as yup from "yup";
 import { useForm, yupResolver } from "@mantine/form";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../assets/css/checkCodeRegister.module.css";
 import code from "../../assets/vectors/Vector5.png";
 import Progress from "../../components/general/Progress";
 import { useTranslation } from "react-i18next";
-import { PostCode } from "../../api/researcher/postCheckCode";
-
+import useCheckCode from "../../components/useMutation/researcher/useCheckCode";
+// import { PostCode } from "../../api/researcher/postCheckCode";
 const schema = yup.object().shape({
-  code: yup.string().min(8, "name should have at least 8 numbers "),
+  code: yup.string().matches(/^[0-9]{8}$/, "code should be 8 numbers "),
 });
 
 const CheckCodeRegister = () => {
   const { t } = useTranslation();
-
+  const researcher = JSON.parse(localStorage.getItem("researcherData"));
+  const token = researcher.data.researcher.uuid;
+  const [isSubmitted,setIsSubmitted] = useState(false);
+  const {check,isLoading} = useCheckCode(token)
   const [progress, setProgress] = useState(false);
   const navigate = useNavigate();
 
@@ -28,28 +31,24 @@ const CheckCodeRegister = () => {
 
   const handleSubmite = (values) => {
     if (form.isValid) {
-      const codeFormData = new FormData();
+      const code = new FormData();
       Object.keys(values).forEach((key) => {
-        codeFormData.append(key, values[key]);
-      });
-      const researcher = JSON.parse(localStorage.getItem("researcherData"));
-      const token = researcher.data.researcher.uuid;
-
-      PostCode(codeFormData, token);
-      setProgress(true);
-      setTimeout(() => {
-        setProgress(false);
-        console.log(values);
-        navigate("/login");
-      }, 3000);
-    }
-
+        code.append(key, values[key]);
+      });  
+      setIsSubmitted(true)
+      check(code);
     const validated = form.validate();
-
     if (validated) {
-      validated.errors; //Object with errors
+      validated.errors; 
     }
   };
+}
+  useEffect(() => {
+    if(isSubmitted){
+     setProgress(isLoading)
+    }
+   },[isLoading])
+   
   return (
     <>
       {progress && <Progress />}

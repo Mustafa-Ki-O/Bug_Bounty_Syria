@@ -9,10 +9,11 @@ const Profile = () => {
   return (
     <>
       {progress && <Progress />}
-      {company ? (
-        <InfoCompany setProgress={setProgress} />
+      {company ? 
+      (
+        <InfoCompany setProgress = {setProgress} />
       ) : (
-        <Info setProgress={setProgress} />
+        <Info setProgress = {setProgress} />
       )}
     </>
   );

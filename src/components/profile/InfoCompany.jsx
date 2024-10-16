@@ -133,9 +133,8 @@ const InfoCompany = ({ setProgress }) => {
     <>
       <Container
         className="profile"
-        p={20}
+        mb={80}
         style={{ margin: "auto", position: "relative" }}
-        my={10}
       >
         {
           <ChangePasswordModalCompany
@@ -234,7 +233,7 @@ const InfoCompany = ({ setProgress }) => {
                   rightSection={<img src={typeicon} width="15px" />}
                 />
               </Grid.Col>
-              <Grid.Col offset={{lg:6,md:0}} span={{lg:6 ,md:12}}>
+              <Grid.Col  offset={{lg:6,md:0}} span={{lg:6 ,md:12}}>
                 <TextInput
                   placeholder={t("أدخل عدد موظفي الشركة *")}
                   rightSection={<img src={users} width="20px" />}
@@ -242,7 +241,7 @@ const InfoCompany = ({ setProgress }) => {
                   {...form.getInputProps("employess_count")}
                 />
               </Grid.Col>
-              <Grid.Col span={{lg:6 ,md:12}}>
+              <Grid.Col span={{lg:12 ,md:12}}>
                 <Textarea
                   size="md"
                   radius="md"

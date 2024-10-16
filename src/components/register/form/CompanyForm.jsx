@@ -1,25 +1,30 @@
-import {Checkbox,Select,TextInput,Button,Group,Anchor,PasswordInput,Grid,GridCol} from "@mantine/core";
+import {Checkbox,Select,TextInput,Button,Flex,Anchor,PasswordInput,Grid,GridCol} from "@mantine/core";
 import person from "../../../assets/vectors/Vector1.png";
 import message from "../../../assets/vectors/Vector2.png";
-import PostCompany from "../../../api/copmany/postCompany";
+import useReg from "../../useMutation/company/useReg";
 import webIcon from "../../../assets/vectors/VectorWeb.png";
 import numEmp from "../../../assets/vectors/VectorNum.png";
 import typeicon from "../../../assets/vectors/VectorType.png";
 import "../../../assets/css/company.css";
-import { useNavigate } from "react-router-dom";
 import { yupResolver } from "mantine-form-yup-resolver";
 import * as yup from "yup";
 import { useForm } from "@mantine/form";
 import { useTranslation } from 'react-i18next';
+import { useState,useEffect } from "react";
+import LoginButton from "../../../app/auth/LoginButton";
 
-const CompanyForm = () => {
+const CompanyForm = ({setProgress}) => {
   const { t } = useTranslation();
-
-  const navigate = useNavigate();
+  const {register,isLoading} = useReg();
+  const[isSubmitted,setIsSubmitted] = useState(false)
 
   const schema = yup.object().shape({
     name: yup.string().min(2, t("name should have at least 2 letters ")),
-    domain: yup.string().min(4, t("Invalid domain ")),
+    domain: yup.string().test(
+      'domain',
+      t("Invalid domain"),
+      val => /^https?:\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(val)
+    ),
     type: yup.string().required(t("Invalid type")),
     employess_count: yup.string().required(t("Invalid number of Employee")),
     email: yup.string().required(t("Invalid email")).email(t("Invalid email")),
@@ -33,7 +38,7 @@ const CompanyForm = () => {
   
   const form = useForm({
     mode: "uncontrolled",
-    validateInputOnChange: false,
+    validateInputOnChange: true,
     initialValues:{
       name:'',
       domain:'',
@@ -55,11 +60,17 @@ const CompanyForm = () => {
           newFormData.append(key, values[key]);
           }
       });
-      PostCompany(newFormData);
-      console.log(values);
-      navigate("/loginCompany");
+      setIsSubmitted(true)
+      register(newFormData);
+
     } 
   };
+  useEffect(()=>{
+    if(isSubmitted){
+    setProgress(isLoading)
+    }
+  },[isLoading])
+
   
   return (
     <form
@@ -118,7 +129,7 @@ const CompanyForm = () => {
         {...form.getInputProps("password")}
       />
     </GridCol>
-    <GridCol offset={{lg:6,md:6,sm:0,xs:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
+    <GridCol offset={{lg:6,md:0,sm:0,xs:0}} span={{  lg: 6 ,xs: 12 ,sm: 12 ,md:12 }} style={{direction:'ltr'}}  >
       <Checkbox
         key={form.key("termsOfService")}
         {...form.getInputProps("termsOfService", { type: "checkbox" })}
@@ -135,37 +146,22 @@ const CompanyForm = () => {
       />
     </GridCol>
   </Grid>
-  <Grid mt={20} >
-    <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
-        <Button
-        radius={10}
-          fullWidth
-          size='md'
-          variant="outline"
-          color="#B21222"
-          onClick={() => navigate("/login")}
-        >
-          {t(" تسجيل الدخول كباحث")}
-        </Button>
-        </GridCol>
-        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
-        <Button
-          fullWidth
-          radius={10}
-          size='md'
-          variant="outline"
-          color="#B21222"
-          onClick={() => navigate("/loginCompany")}
-        >
-          {t("تسجيل الدخول كشركة")}
-        </Button>
-        </GridCol>
-        <GridCol span={{ lg:4 , xs:12, sm:12, md:4 }}>
+  <Flex visibleFrom="md" w='60%' gap='1.25rem' justify='center' m="auto" mt={10}>
+         <LoginButton />
         <Button fullWidth radius={10}  size="md" type="submit" variant="filled" color="#B21222">
           {t("انشاء حساب")}
         </Button>
+    </Flex>
+    <Grid hiddenFrom="md" gutter={10}>
+    <GridCol span={12}>
+    <LoginButton />
     </GridCol>
-    </Grid>
+    <GridCol span={12}>
+    <Button fullWidth radius={10}  size="md" type="submit" variant="filled" color="#B21222">
+          {t("انشاء حساب")}
+        </Button>
+    </GridCol>
+ </Grid>
 </form>
   );
 };

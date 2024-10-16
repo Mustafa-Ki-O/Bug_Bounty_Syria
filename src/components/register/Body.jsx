@@ -5,7 +5,7 @@ import ResearcherForm from "./form/ResearcherForm";
 import CompanyForm from "./form/CompanyForm";
 import { useTranslation } from 'react-i18next';
 
-const Body = () => {
+const Body = ({setProgress}) => {
   const { t } = useTranslation();
 
   const [active, setActive] = useState('1');
@@ -23,10 +23,12 @@ const Body = () => {
     >
         <Stack w='100%' bg="#F9F9F9" p={30} style={{borderRadius:10,boxShadow:"0px 2px 6px 0 #000"}}>
         <Header />
-           <Flex visibleFrom="md" w='80%' gap='10px' justify='center' m="auto">
+           <Flex visibleFrom="md" w='80%' gap='1.25rem' justify='center' m="auto">
              <Button
                fullWidth
+               radius='15px 10px 10px 10px'
                size="md"
+               style={{boxShadow: active ==='0' ? '0 2px 4px 0 #b21222' : undefined}}
                variant={active === '0' ? "filled" : "outline"}
                color="#B21222"
                onClick={() => handleClick('0')}
@@ -35,7 +37,9 @@ const Body = () => {
              </Button>
              <Button
                fullWidth
+                radius='10px 15px 10px 10px'
                size="md"
+               style={{boxShadow: active ==='1' ? '0 2px 4px 0 #b21222' : undefined}}
                variant={active === '1' ? "filled" : "outline"}
                color="#B21222"
                onClick={() => handleClick('1')}
@@ -57,7 +61,7 @@ const Body = () => {
            />
            </GridCol>
          </Grid>
-        {active === '0' ? <CompanyForm /> : <ResearcherForm />}
+        {active === '0' ? <CompanyForm setProgress={setProgress}/> : <ResearcherForm setProgress={setProgress}/>}
         </Stack>
     </Container>
   );

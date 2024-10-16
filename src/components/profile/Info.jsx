@@ -120,9 +120,8 @@ const Info = ({ setProgress }) => {
     <>
       <Container
         className="profile"
-        p={20}
+        mb={80}
         style={{ margin: "auto", position: "relative" }}
-        my={10}
       >
         {
           <ChangePasswordModal

@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from "react-router-dom"
+import { createBrowserRouter, Outlet, useLocation } from "react-router-dom"
 import Register from "../app/auth/Register"
 import Login from "../app/auth/Login"
 import Home from "../app/home"
@@ -12,16 +12,16 @@ import CheckCode from "../app/auth/CheckCode"
 import CheckCodeRegister from "../app/auth/CheckCodeRegister"
 import ReSetPassword from "../app/auth/ReSetPassword"
 import AddProgram from "../app/AddProgram"
-import LoginCompany from "../app/auth/LoginCompany"
 import ChangePassword from "../app/auth/ChangePassword"
 import Researcher from "../app/Researcher"
+import GeneralLogin from "../app/auth/GeneralLogin"
 
 const route = createBrowserRouter([
     {
         path:'/',
         element:(
         <>
-        <Container fluid p={0}>
+        <Container  fluid p='100px 0'  style={{placeContent:'center',minHeight:'100vh'}}>
            <Navbar/>
            <Outlet/>
            <Footer/>
@@ -34,12 +34,9 @@ const route = createBrowserRouter([
             },
             {
                 path:'login',
-                element:<Login/>
+                element:<GeneralLogin/>
             },
-            {
-                path: "loginCompany",
-                element: <LoginCompany />,
-              },
+
             {
                 path: "resetpassword",
                 element: <ReSetPassword />,

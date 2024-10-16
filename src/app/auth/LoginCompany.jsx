@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { TextInput, Button, PasswordInput, rem } from "@mantine/core";
-import styles from "../../assets/css/login.module.css";
+import { TextInput, Button, PasswordInput, rem,Container,Flex,Grid,GridCol} from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { IconAt } from "@tabler/icons-react";
-import { Container, Stack } from "@mantine/core";
-import Progress from "../../components/general/Progress";
+// import { Container, Stack } from "@mantine/core";
+// import Progress from "../../components/general/Progress";
 import { useState,useEffect } from "react";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
@@ -17,17 +16,12 @@ const schema = yup.object().shape({
   email: yup.string().required("Invalid email").email("Invalid email"),
 });
 
-const LoginCompany = () => {
+const LoginCompany = ({setProgress}) => {
   const { t } = useTranslation();
   const {login,isLoading} = useLogin();
   const [isSubmitted,setIsSubmitted] = useState(false);
-  const [progress, setProgress] = useState(false);
   const navigate = useNavigate();
   const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
-
-  useEffect(()=>{
-    localStorage.clear();
-  },[])
 
   const form = useForm({
     mode: "uncontrolled",
@@ -62,58 +56,49 @@ const LoginCompany = () => {
 
   return (
     <>
-      {progress && <Progress />}
-      <Container
-        fluid
-        m={0}
-        p={0}
-        h="100vh"
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <Stack
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <div className={styles.contBox}>
-            <div className={styles.headerBox}>
-              <h2>{t("Bug Bounty مرحبا بك في")}</h2>
-              <h5>{t("يرجى التسجيل للمتابعة")}</h5>
-            </div>
-            <div className={styles.contInputs}>
-              <form onSubmit={form.onSubmit(handleSubmite)}>
+           <Container w='100%'>
+              <form style={{width:'100%'}} onSubmit={form.onSubmit(handleSubmite)}>
+              <Grid gutter="sm" justify="center" dir="rtl" mb={20}>
+              <GridCol span={12}>
                 <TextInput
                   mt="sm"
                   placeholder={t("أدخل البريد الالكتروني *")}
                   key={form.key("email")}
                   {...form.getInputProps("email")}
-                  style={{ marginBottom: "20px", width: "300px" }}
-                  className={styles.emailInput}
                   rightSection={icon}
                 />
+                </GridCol>
+                <GridCol span={12}>
                 <PasswordInput
                   mt="sm"
                   placeholder={t("أدخل كلمة المرور *")}
                   key={form.key("password")}
                   {...form.getInputProps("password")}
-                  style={{ marginBottom: "20px", width: "300px" }}
-                  className={styles.passInput}
                 />
-                <div className={styles.contButtons}>
-                  <Button type="submit" mt="sm">
-                    {t("تسجيل الدخول")}
-                  </Button>
-                  <Button mt="sm" onClick={() => navigate(`/`)}>
+                </GridCol>
+                </Grid>
+                <Flex visibleFrom="md" gap='1.25rem' w='100%' justify='space-around'>
+                <Button fullWidth radius={10} variant="outline" color='#b21222' mt="sm" onClick={() => navigate(`/`)}>
                     {t("انشاء حساب")}
                   </Button>
-                </div>
+                  <Button fullWidth radius={10} variant="filled" color='#b21222' type="submit" mt="sm">
+                    {t("تسجيل الدخول")}
+                  </Button>
+                </Flex>
+                <Grid hiddenFrom="md" gutter={0}>
+                  <GridCol span={12}>
+                  <Button fullWidth radius={10} variant="filled" color='#b21222' type="submit" mt="sm">
+                    {t("تسجيل الدخول")}
+                  </Button>
+                  </GridCol>
+                  <GridCol span={12}>
+                  <Button fullWidth radius={10} variant="outline" color='#b21222' mt="sm" onClick={() => navigate(`/`)}>
+                    {t("انشاء حساب")}
+                  </Button>
+                  </GridCol>
+                </Grid>
               </form>
-            </div>
-          </div>
-        </Stack>
-      </Container>
+            </Container>
     </>
   );
 };

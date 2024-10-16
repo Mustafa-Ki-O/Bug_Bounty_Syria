@@ -9,7 +9,6 @@ const useLogout = () => {
     mutationFn: () => LogOut(),
     onSuccess: () => {
       navigate("/login");
-      localStorage.removeItem("researcher");
       toast.success("تم تسجيل الخروج بنجاح");
       console.log("تم تسجيل الخروج بنجاح");
     },

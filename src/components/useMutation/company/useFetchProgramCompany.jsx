@@ -5,7 +5,7 @@ import fetchProgramCompany from "../../../api/copmany/fetchProgramCompany";
 const useFetchProgramCompany = () => {
   const { mutate: fetchProgram, isLoading } = useMutation({
     mutationFn: (setData) =>
-      fetchProgramCompany().then((res) => setData(res.data.product)),
+      fetchProgramCompany().then((res) => setData(res.data.products)),
     onSuccess: () => {
       console.log("تم جلب البرامج بنجاح");
     },

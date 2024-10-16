@@ -5,7 +5,7 @@ const useFetchResearcher = (setSelectedRes,setResReports) => {
   const { mutate: fetchResearcher, isLoading } = useMutation({
     mutationFn: (id) => {
         FetchResProfile(id).then((res)=>{
-            setSelectedRes(res.data.researcher)
+            setSelectedRes(res.data['researcher-data'])
             setResReports(res.data.accepted_reports)
         })
     },

@@ -13,7 +13,6 @@ import vector from "../../assets/vectors/Vector.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import notification from "../../assets/vectors/Vector (7).png";
-// import LanguageSwitcher from "./languageSwitcher";
 import { useTranslation } from "react-i18next";
 import DrawerNav from "./Drawer";
 import { useDisclosure } from "@mantine/hooks";
@@ -40,6 +39,8 @@ const Navbar = () => {
 
   return (
     <>
+    {(location.pathname !== '/login' && location.pathname !== '/') && (
+      <>
       <DrawerNav opened={opened} close={close} />
       <AppShell navbar={{ width: "100%", breakpoint: "sm" }}>
         <AppShell.Navbar
@@ -49,10 +50,11 @@ const Navbar = () => {
           h="auto"
           style={{
             paddingInline: 0,
-            position: "relative",
+            position: "absolute",
+            width:'100%',
             top: 0,
             right: 0,
-            boxShadow: "0 2px 8px 0 #000",
+            boxShadow: "0 1px 3px 0 #000",
           }}
         >
           <Flex justify="space-between" align="center">
@@ -74,8 +76,7 @@ const Navbar = () => {
             }}
           >
             {location.pathname === "/" ||
-            location.pathname === "/login" ||
-            location.pathname === "/loginCompany" ? (
+            location.pathname === "/login"  ? (
               <Group>
                 <Button
                 radius={8}
@@ -175,6 +176,9 @@ const Navbar = () => {
           </Container>
         </AppShell.Navbar>
       </AppShell>
+      
+    </>
+    )}
     </>
   );
 };

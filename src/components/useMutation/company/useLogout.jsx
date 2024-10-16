@@ -8,8 +8,7 @@ const useLogout = () => {
   const { mutate: logout, isLoading } = useMutation({
     mutationFn: () => logOut(),
     onSuccess: () => {
-      navigate("/loginCompany");
-      localStorage.removeItem("company");
+      navigate("/login");
       toast.success("تم تسجيل الخروج بنجاح");
       console.log("تم تسجيل الخروج بنجاح");
     },

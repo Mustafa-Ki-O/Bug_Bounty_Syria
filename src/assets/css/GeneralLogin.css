@@ -1,0 +1,20 @@
+/* Medium screen and down */
+@media (max-width: 1023px) {
+    .buttons {
+      flex-direction: column;
+    }
+  }
+  
+  /* Small screen and down */
+  @media (max-width: 767px) {
+    .buttons {
+      flex-direction: column;
+    }
+  }
+  
+  /* Extra small screen and down */
+  @media (max-width: 479px) {
+    .buttons {
+      flex-direction: column;
+    }
+  }

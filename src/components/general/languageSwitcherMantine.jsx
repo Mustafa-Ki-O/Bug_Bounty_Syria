@@ -10,7 +10,6 @@ export function LanguagePicker() {
   const { t, i18n } = useTranslation();
 
   const handleLanguageChange = (item) => {
-    setSelected(item);
     localStorage.setItem("lang", item.value);
     i18n.changeLanguage(item.value);
   };
@@ -21,7 +20,7 @@ export function LanguagePicker() {
   ];
 
   const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState(data[0]);
+  const lang = localStorage.getItem("lang");
 
   const items = data.map((item) => (
     <Menu.Item
@@ -52,7 +51,11 @@ export function LanguagePicker() {
           data-expanded={opened || undefined}
         >
           <Group gap="xs">
-            <Image src={selected.image} width={22} height={22} />
+            <Image
+              src={lang === "en" ? data[0].image : data[1].image}
+              width={22}
+              height={22}
+            />
           </Group>
           <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
         </UnstyledButton>

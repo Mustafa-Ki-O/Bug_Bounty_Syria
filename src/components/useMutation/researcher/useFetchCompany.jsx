@@ -7,7 +7,7 @@ const useFetchCompany = (setSelectedCompany,setCompanyPrograms) => {
     mutationFn: (id) => {
         FetchCompanyProfile(id).then((res)=>{
             setSelectedCompany(res.data['company-data'])
-            setCompanyPrograms(res.data['company-data'].products)
+            // setCompanyPrograms(res.data['company-data'].products)
         })
     },
     onSuccess: () => {  

@@ -94,5 +94,11 @@
   "أدخل البريد الالكتروني": "Enter your email",
   "أدخل كلمة المرور": "Enter your password",
   "يرجى تفقد البريد و من ثم ادخال الرمز المؤلف من 4 خانات": "Please check your mail and then enter the 4-digit code.",
-  "أدخل كود التسجيل": "Enter the registration code"
+  "أدخل كود التسجيل": "Enter the registration code",
+  "الدخول كباحث أمني" :"Login as Researcher",
+  "الدخول كشركة":"Login as Company",
+  "تقييم الباحث" : "Rate",
+  "تواصل مباشر":"Contact",
+  "أرشيف الثفرات المقبولة": "Accepted bug reports",
+  "الحالة":"Status"
 }

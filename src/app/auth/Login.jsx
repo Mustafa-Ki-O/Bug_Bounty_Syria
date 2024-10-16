@@ -2,12 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { TextInput, Button, PasswordInput, rem ,Container, Flex,Grid, GridCol} from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { IconAt } from "@tabler/icons-react";
-// import { Container, Stack } from "@mantine/core";
-// import Progress from '../../components/general/Progress'
 import { useState,useEffect } from "react";
 import * as yup from "yup";
 import { useTranslation } from 'react-i18next';
-// import { SignIn } from "../../api/researcher/signIn";
 import useLogin from "../../components/useMutation/researcher/useLogin";
 
 const schema = yup.object().shape({

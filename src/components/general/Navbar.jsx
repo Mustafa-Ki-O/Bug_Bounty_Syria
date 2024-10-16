@@ -7,6 +7,7 @@ import {
   Tabs,
   Flex,
   Burger,
+  Box,
 } from "@mantine/core";
 import "../../assets/css/infoNav.css";
 import vector from "../../assets/vectors/Vector.png";
@@ -39,7 +40,7 @@ const Navbar = () => {
 
   return (
     <>
-    {(location.pathname !== '/login' && location.pathname !== '/') && (
+    {(location.pathname !== '/login' && location.pathname !== '/') ? (
       <>
       <DrawerNav opened={opened} close={close} />
       <AppShell navbar={{ width: "100%", breakpoint: "sm" }}>
@@ -178,6 +179,11 @@ const Navbar = () => {
       </AppShell>
       
     </>
+    ):(
+      <Box style={{position:'absolute',right:20,top:20}}>
+        <LanguagePicker />
+      </Box>
+      
     )}
     </>
   );

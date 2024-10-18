@@ -40,7 +40,12 @@ const Navbar = () => {
 
   return (
     <>
-    {(location.pathname !== '/login' && location.pathname !== '/') ? (
+    {(location.pathname !== '/login' &&
+     location.pathname !== '/' &&
+      location.pathname !=='/not-found' &&
+       location.pathname !=='/server-error' &&
+       location.pathname !=='/unauthorized' && 
+       location.pathname !== '/network-error') ? (
       <>
       <DrawerNav opened={opened} close={close} />
       <AppShell navbar={{ width: "100%", breakpoint: "sm" }}>
@@ -181,7 +186,13 @@ const Navbar = () => {
     </>
     ):(
       <Box style={{position:'absolute',right:20,top:20}}>
+        {(location.pathname !== '/not-found' &&
+         location.pathname !== '/server-error' &&
+         location.pathname !=='/unauthorized' && 
+         location.pathname !== '/network-error') &&
+          (
         <LanguagePicker />
+      )}
       </Box>
       
     )}

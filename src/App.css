@@ -12,8 +12,17 @@
 .mantine-Button-root:focus {
   outline: none;
 }
+
 .mantine-Button-root:hover {
   border-color: #b21222 !important;
+  transform: scale(1.05);
+  transition: all 0.4s;
+}
+
+.mantine-Card-root{
+  transition: all 0.4s;
+}
+.mantine-Card-root:hover{
   transform: scale(1.05);
   transition: all 0.4s;
 }

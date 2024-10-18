@@ -1,6 +1,5 @@
 import { createBrowserRouter, Outlet, useLocation } from "react-router-dom"
 import Register from "../app/auth/Register"
-import Login from "../app/auth/Login"
 import Home from "../app/home"
 import Company from "../app/Company"
 import Profile from "../app/Profile"
@@ -15,6 +14,10 @@ import AddProgram from "../app/AddProgram"
 import ChangePassword from "../app/auth/ChangePassword"
 import Researcher from "../app/Researcher"
 import GeneralLogin from "../app/auth/GeneralLogin"
+import NotFound from "../app/errors/NotFound"
+import InternalServer from "../app/errors/InternalServer"
+import Unauthorized from "../app/errors/Unauthorized"
+import NetworkError from "../app/errors/NetworkError"
 
 const route = createBrowserRouter([
     {
@@ -77,7 +80,23 @@ const route = createBrowserRouter([
            {
                path:'addProgram',
                element: <AddProgram/>
-           }        
+           },
+           {
+            path:'not-found',
+            element:<NotFound/>
+           },
+           {
+            path:'server-error',
+            element:<InternalServer/>
+           },
+           {
+            path:'unauthorized',
+            element:<Unauthorized/>
+           },
+           {
+            path:'network-error',
+            element:<NetworkError/>
+           }
         ]
     }
     

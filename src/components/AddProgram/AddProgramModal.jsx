@@ -15,9 +15,14 @@ function AddProgramModal({ opened, close,setData, fetchData,setProgress }) {
   const [isSubmitted,setIsSubmitted] = useState(false)
 
   const schema = yup.object().shape({
-    title: yup.string().min(2, t("الاسم يجب ان يحوي حرفين على الاقل")),
-    url: yup.string().required(t("Invalid url")),
-    description: yup.string().min(12, t("الوصف لا يقل عن 12 حرف")),
+    title: yup.string().min(2, t("the name should have 2 chars at least")),
+    url: yup.string()
+    .matches(
+      /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/,
+      "Invalid URL format"
+    )
+    .required("URL is required"),
+    description: yup.string().min(12, t("at least 12 char")),
   });
 
   const form = useForm({

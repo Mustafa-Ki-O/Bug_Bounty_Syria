@@ -1,8 +1,8 @@
-import { Anchor, Box, Button, Group, Stack } from "@mantine/core";
+import { Anchor, Box, Button, Group, Image, Stack } from "@mantine/core";
 import linkImg from "../../assets/vectors/Vector (8).png";
 import buildImg from "../../assets/vectors/Vector (10).png";
 import users from "../../assets/vectors/Vector (9).png";
-import visit from "../../assets/vectors/navigation-share.png";
+import visit from "../../assets/vectors/Vector (12).png";
 import badge from "../../assets/vectors/Vector (6).png";
 import { useTranslation } from "react-i18next";
 
@@ -22,7 +22,7 @@ const InfoCompany = ({id, name, domain, numEmployee, type, description,logo}) =>
             <span style={{ marginRight: "20px", fontWeight: "bold" }}>
               {name}
             </span>
-            <img src={logo} width={35} height={35} style={{ borderRadius: "50%" }} />
+            <Image src={logo} radius='50%' w={70} height={70} />
           </div>
         </Group>
         <Box
@@ -41,7 +41,7 @@ const InfoCompany = ({id, name, domain, numEmployee, type, description,logo}) =>
           >
             {domain}
           </Anchor>
-          <img src={linkImg} width={25} />
+          <Image src={linkImg} w={20} />
         </Box>
         <Box style={{ textAlign: "right" }}>
           <p style={{ fontSize: "13px", fontWeight: "bold" }}>{description}</p>
@@ -77,7 +77,7 @@ const InfoCompany = ({id, name, domain, numEmployee, type, description,logo}) =>
             fw={700}
             onClick={() => window.open(`https://${domain}`, "_blank")}
           >
-            <img src={visit} width={20} style={{ marginRight: "5px" }} />
+            <Image src={visit} w={16} style={{ marginRight: "5px" }} />
             {t("زيارة الموقع")}
           </Button>
         </Box>

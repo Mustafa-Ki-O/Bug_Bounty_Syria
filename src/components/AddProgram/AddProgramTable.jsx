@@ -1,4 +1,4 @@
-import { Box, Button, Container, Table } from "@mantine/core";
+import { Box, Button, Container, Table ,Image} from "@mantine/core";
 import styles from "../../assets/css/addProgramTable.module.css";
 import trash from "../../assets/vectors/trash.png";
 import add from "../../assets/vectors/VectorAdd.png";
@@ -35,14 +35,15 @@ function AddProgramTable({ data, fetchData,setData ,setProgress}) {
       <Table.Td>{pro.title}</Table.Td>
       <Table.Td>{pro.url}</Table.Td>
       <Table.Td>
-        {pro.description}{" "}
+        {pro.description}
+        </Table.Td>
+        <Table.Td>
         <Button
           onClick={() => handleDelete(pro.uuid)}
           variant="transparent"
-          mr={50}
         >
-          <img src={trash} width={20} />
-        </Button>{" "}
+          <Image src={trash} w={20} />
+        </Button>
       </Table.Td>
     </Table.Tr>
   ));
@@ -64,7 +65,8 @@ function AddProgramTable({ data, fetchData,setData ,setProgress}) {
             <Table.Tr c="#B21222" ta="center">
               <Table.Th ta="center">{t("اسم البرنامج")}</Table.Th>
               <Table.Th ta="center">{t("رابط البرنامج")}</Table.Th>
-              <Table.Th ta="center">{t("الوصف")}</Table.Th>
+              <Table.Th ta="center" >{t("الوصف")}</Table.Th>
+              <Table.Th ta="center"></Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>{rows}</Table.Tbody>

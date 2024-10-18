@@ -1,6 +1,6 @@
-import { Table,Button } from "@mantine/core";
+import { Table,Button,Image, Anchor, Tooltip } from "@mantine/core";
 import styles from "../../assets/css/tablePrograms.module.css";
-import up from "../../assets/vectors/navigation-up.png";
+import up from "../../assets/vectors/Vector9.png";
 import { useTranslation } from "react-i18next";
 import SendReportModal from "./SendReportModal";
 import { useDisclosure } from "@mantine/hooks";
@@ -21,8 +21,18 @@ function TablePrograms({ data,setProgress }) {
       style={{ borderBottom: "none" }}
     >
       <Table.Td>{pro.title}</Table.Td>
-      <Table.Td>{pro.url}</Table.Td>
-      <Table.Td>{pro.description}</Table.Td>
+      <Table.Td>
+      <Tooltip label={t(`${pro.url}`)} bg='#b21222'>
+      <Anchor
+        href={pro.url.startsWith('http') ? pro.url : `http://${pro.url}`} 
+        target="_blank"
+        td='underline'
+        c='#b21222'>
+     {t('رابط البرنامج')}
+      </Anchor>
+      </Tooltip>
+      </Table.Td>
+      <Table.Td visibleFrom="md">{pro.description}</Table.Td>
       <Table.Td>
       <Button
             color="#B21222"
@@ -35,7 +45,7 @@ function TablePrograms({ data,setProgress }) {
                 setProductId(pro.uuid)
             }}
           >
-            <img src={up} width={20} style={{ marginRight: "5px" }} />
+            <Image visibleFrom="md" src={up} w={14} mx={10}/>
             {t("رفع التقرير")}
           </Button>
       </Table.Td>
@@ -59,7 +69,7 @@ function TablePrograms({ data,setProgress }) {
         <Table.Tr c="#B21222" ta="center">
           <Table.Th ta="center">{t("اسم البرنامج")}</Table.Th>
           <Table.Th ta="center">{t("رابط البرنامج")}</Table.Th>
-          <Table.Th ta="center">{t("الوصف")}</Table.Th>
+          <Table.Th ta="center" visibleFrom="md">{t("الوصف")}</Table.Th>
           <Table.Th ta='center'>{t('رفع التقرير')}</Table.Th>
         </Table.Tr>
       </Table.Thead>

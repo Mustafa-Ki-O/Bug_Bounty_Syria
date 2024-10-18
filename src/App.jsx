@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import StartPage from './app/StartPage'
 import { RouterProvider } from 'react-router-dom'
 import route from './router/route'
 import { Toaster } from 'react-hot-toast';
 
+
 function App() {
+  
 
   const [show,setShow] = useState(true);
 

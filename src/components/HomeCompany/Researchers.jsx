@@ -2,9 +2,8 @@ import { Text, Container, Grid } from "@mantine/core";
 import ResearcherCard from "./ResearcherCard";
 import { useTranslation } from "react-i18next";
 
-const Researchers = ({researchers}) => {
+const Researchers = ({ researchers }) => {
   const { t } = useTranslation();
-
 
   return (
     <>
@@ -15,7 +14,7 @@ const Researchers = ({researchers}) => {
         <Grid justify="center" gutter={25}>
           {researchers ? (
             researchers.map((res, index) => (
-              <Grid.Col span={{lg:3 , md:4,sm:6,xs:12 }} key={index}>
+              <Grid.Col span={{ lg: 3, md: 4, sm: 6, xs: 12 }} key={index}>
                 <ResearcherCard
                   id={res.uuid}
                   name={res.name}

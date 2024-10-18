@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 const useFetchResearcher = (setSelectedRes, setResReports) => {
   const navigate = useNavigate();
-  
+
   const { mutate: fetchResearcher, isLoading } = useMutation({
     mutationFn: (id) => {
       return FetchResProfile(id).then((res) => {
-        setSelectedRes(res.data['researcher-data']);
+        setSelectedRes(res.data.researcher);
         setResReports(res.data.accepted_reports);
       });
     },
-    onSuccess: () => {  
+    onSuccess: () => {
       console.log("تم جلب البيانات بنجاح");
     },
     onError: (err) => {
@@ -21,17 +21,16 @@ const useFetchResearcher = (setSelectedRes, setResReports) => {
         const { status } = err.response;
         console.log("Response status:", status);
         if (status === 500) {
-          navigate('/server-error');
+          navigate("/server-error");
         } else if (status === 404) {
-          navigate('/not-found');
-        } 
-        else if(status === 401){
-          navigate('/unauthorized');
+          navigate("/not-found");
+        } else if (status === 401) {
+          navigate("/unauthorized");
         } else if (err.request) {
-          navigate('/network-error')
+          navigate("/network-error");
         }
       } else {
-        toast.error('حدث خطأ ,اعد المحاولة ثانيةً')
+        toast.error("حدث خطأ ,اعد المحاولة ثانيةً");
       }
     },
   });

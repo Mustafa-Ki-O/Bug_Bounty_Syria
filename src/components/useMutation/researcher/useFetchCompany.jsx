@@ -9,6 +9,10 @@ const useFetchCompany = (setSelectedCompany, setCompanyPrograms) => {
             setSelectedCompany(res.data['company-data'])
             setCompanyPrograms(res.data['company-data'].products)
         })
+      FetchCompanyProfile(id).then((res) => {
+        setSelectedCompany(res.data["company-data"]);
+        setCompanyPrograms(res.data["company-data"].products);
+      });
     },
     onSuccess: () => {
       console.log("تم جلب البيانات بنجاح");

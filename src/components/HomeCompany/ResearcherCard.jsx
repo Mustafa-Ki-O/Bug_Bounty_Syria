@@ -2,8 +2,8 @@ import { Card, Image, Text, Button, Group, Stack } from "@mantine/core";
 import star from "../../assets/vectors/star.png";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import '../../assets/css/researcherCard.css'
-const ResearcherCard = ({id, name, rate, description, image }) => {
+import "../../assets/css/researcherCard.css";
+const ResearcherCard = ({ id, name, rate, description, image }) => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -24,8 +24,8 @@ const ResearcherCard = ({id, name, rate, description, image }) => {
             src={image}
             w={40}
             h={40}
-            radius='50%'
-            style={{filter: "drop-shadow(0px 1px 2px #000)" }}
+            radius="50%"
+            style={{ filter: "drop-shadow(0px 1px 2px #000)" }}
           />
         </Group>
         <Group justify="flex-end" gap={3}>

@@ -16,21 +16,19 @@ const useFetchHomeResearcher = () => {
         const { status } = err.response;
         console.log("Response status:", status);
         if (status === 500) {
-          navigate('/server-error');
+          navigate("/server-error");
         } else if (status === 404) {
-          navigate('/not-found');
-        } 
-        else if(status === 401){
-          navigate('/unauthorized');
+          navigate("/not-found");
+        } else if (status === 401) {
+          navigate("/unauthorized");
         } else if (err.request) {
-          navigate('/network-error')
+          navigate("/network-error");
         }
-      } 
-      else {
-    toast.error("حدث خطأ ما ,أعد المحاولة")
-}
+      } else {
+        toast.error("حدث خطأ ما ,أعد المحاولة");
+      }
     },
   });
-  return { fetchResearcher, isLoading};
+  return { fetchResearcher, isLoading };
 };
 export default useFetchHomeResearcher;

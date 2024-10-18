@@ -80,7 +80,6 @@ const GapsTableCompany = ({ setProgress }) => {
       <TableCompanyModal opened={opened} close={close} />
       <Table
         className={styles.tableProgram}
-        h={363}
         ta="center"
         stickyHeaderOffset={60}
         style={{

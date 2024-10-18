@@ -6,13 +6,12 @@ import SendReportModal from "./SendReportModal";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
 
-function TablePrograms({ data,setProgress }) {
-
+function TablePrograms({ data, setProgress }) {
   const [opened, { open, close }] = useDisclosure(false);
-  const [productId,setProductId] = useState()
+  const [productId, setProductId] = useState();
   const { t } = useTranslation();
 
-  const rows =  data.map((pro) => (
+  const rows = data.map((pro) => (
     <Table.Tr
       className={styles.tableRowPrograms}
       key={pro.uuid}

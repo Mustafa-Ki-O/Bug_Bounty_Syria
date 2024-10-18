@@ -17,35 +17,38 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [companies, setCompanies] = useState([]);
   const { fetchResearcher, isLoading } = useFetchHomeResearcher();
-  const [researchers,setResearchers] = useState([])
+  const [researchers, setResearchers] = useState([]);
+
   useEffect(() => {
     if (company) {
       fetch(setData);
-      
     } else {
       fetchResearcher(setCompanies);
     }
   }, []);
 
-  useEffect(()=>{
-    if(data){
-      setResearchers(data.researcher)
+  useEffect(() => {
+    if (data) {
+      setResearchers(data.researcher);
     }
-  },[data])
+  }, [data]);
 
   useEffect(() => {
     setProgress(isLoadingCom || isLoading);
   }, [isLoadingCom || isLoading]);
 
-const [filteredResearchers,setFilterdResearchers] = useState([]);
-  
-return (
+  const [filteredResearchers, setFilterdResearchers] = useState([]);
+
+  return (
     <>
       {progress && <Progress />}
       {company ? (
         <Container p={20} fluid mih="100vh">
           <Diagrams data={data} />
-          <Search researchers={researchers} setFilteredResearchers={setFilterdResearchers}/>
+          <Search
+            researchers={researchers}
+            setFilteredResearchers={setFilterdResearchers}
+          />
           <Researchers researchers={filteredResearchers} />
         </Container>
       ) : (

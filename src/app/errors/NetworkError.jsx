@@ -12,7 +12,6 @@ const NetworkError = () => {
           <p>there is a problem.</p>
         </video>
       </AspectRatio>
-        
         </>
     )
 }

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import useFetchResearcher from "../components/useMutation/company/useFetchResearcher";
 import Progress from "../components/general/Progress";
 import { Stack } from "@mantine/core";
@@ -7,31 +7,32 @@ import SelectedRes from "../components/researcher/SelectedRes";
 import Reports from "../components/researcher/Reports";
 
 const Researcher = () => {
-    const {id} = useParams();
-    const [progress,setProgress] = useState(false)
-    const [selectedRes,setSelectedRes] = useState({})
-    const [resReports,setResReports] = useState([])
-   
-    const {fetchResearcher,isLoading} = useFetchResearcher(setSelectedRes,setResReports)
+  const { id } = useParams();
+  const [progress, setProgress] = useState(false);
+  const [selectedRes, setSelectedRes] = useState({});
+  const [resReports, setResReports] = useState([]);
 
-    useEffect(()=>{
-        fetchResearcher(id);
-      },[])
+  const { fetchResearcher, isLoading } = useFetchResearcher(
+    setSelectedRes,
+    setResReports
+  );
 
-      useEffect(()=>{
-        setProgress(isLoading)
-      },[isLoading])
+  useEffect(() => {
+    fetchResearcher(id);
+  }, []);
 
-      return(
-        <>
-        {progress && <Progress/>}
-        <Stack p={20}>
-            <SelectedRes selectedRes={selectedRes} />
-            <Reports resReports={resReports} />
-        </Stack>
-        </>
-      )
+  useEffect(() => {
+    setProgress(isLoading);
+  }, [isLoading]);
 
-
-}
-export default Researcher
+  return (
+    <>
+      {progress && <Progress />}
+      <Stack p={20}>
+        <SelectedRes selectedRes={selectedRes} />
+        <Reports resReports={resReports} />
+      </Stack>
+    </>
+  );
+};
+export default Researcher;

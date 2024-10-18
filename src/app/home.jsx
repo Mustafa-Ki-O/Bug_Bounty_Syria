@@ -29,7 +29,7 @@ const Home = () => {
 
   useEffect(() => {
     if (data) {
-      setResearchers(data.researcher);
+      setResearchers(data.researchers);
     }
   }, [data]);
 

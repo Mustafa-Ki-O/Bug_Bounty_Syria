@@ -5,7 +5,7 @@ import { fetchReports } from "../../../api/copmany/fetchReports";
 const useFetchReports = () => {
   const { mutate: fetchAllReports, isLoading } = useMutation({
     mutationFn: (setDataCompany) =>
-      fetchReports().then((res) => setDataCompany(res.data.report)),
+      fetchReports().then((res) => setDataCompany(res.data.reports)),
     onSuccess: () => {
       console.log("تم جلب البيانات بنجاح");
     },

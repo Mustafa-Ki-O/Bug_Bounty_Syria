@@ -64,18 +64,25 @@ const DrawerNav = ({ opened, close }) => {
             </>
           ) : (
             <>
-              <Grid mt={30} gutter={20}>
-                <GridCol mb={30}>
+              <Grid mt={30} gutter={20} justify="center" align="center">
+                <GridCol mb={30} span={6}>
                   <Image
                     radius="50%"
-                    w={80}
+                    w="100%"
                     src={image}
                     style={{
                       cursor: "pointer",
                       border: "1px solid red",
-                      boxShadow: "0 3px 6px 0px #000",
+                      boxShadow: "0 3px 4px 0px #000",
                     }}
                   />
+                </GridCol>
+                <GridCol span={6}>
+                  <h2 style={{ color: "#b21222" }}>
+                    {company
+                      ? company.data.company.name
+                      : researcher.data.researcher.name}
+                  </h2>
                 </GridCol>
                 <GridCol>
                   <Button fullWidth variant="outline" color="#B21222">
@@ -89,7 +96,7 @@ const DrawerNav = ({ opened, close }) => {
                     />
                   </Button>
                 </GridCol>
-                <GridCol mt={80}>
+                <GridCol>
                   <Button
                     fullWidth
                     variant="filled"
@@ -117,7 +124,7 @@ const DrawerNav = ({ opened, close }) => {
             </>
           )}
           <Grid mt={20}>
-            <GridCol>
+            <GridCol offset={16}>
               <LanguagePicker />
             </GridCol>
           </Grid>

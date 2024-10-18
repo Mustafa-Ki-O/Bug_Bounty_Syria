@@ -1,4 +1,4 @@
-import { Button, Table } from "@mantine/core";
+import { Button, Table,Anchor } from "@mantine/core";
 import styles from "../../../assets/css/gapsTable.module.css";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ const GapsTable = ({setProgress}) => {
   useEffect(() => {
     setProgress(isLoading);
   }, [isLoading]);
-
+  const prefix = "https://api.bug-bounty.darrebni.net/storage/app/public/";
   const rows =reports?.length > 0 ? reports.map((pro) => (
     <Table.Tr
       className={styles.tableRowPrograms}
@@ -28,7 +28,19 @@ const GapsTable = ({setProgress}) => {
       <Table.Td>{pro.title}</Table.Td>
       <Table.Td>{pro.company_name}</Table.Td>
       <Table.Td visibleFrom="md">{pro.created_at}</Table.Td>
-      <Table.Td visibleFrom="md">{pro.file}</Table.Td>
+      <Table.Td visibleFrom="md">
+      <Anchor
+            href={pro.file.replace(prefix, '')}
+            target="_blank"
+            inherit
+            td='underline'
+            c='#b21222'
+            justify="end"
+            style={{ color: "black", marginRight: "10px" }}
+          >
+            قراءة ملف الثغرة
+          </Anchor>
+      </Table.Td>
       <Table.Td>
         <Button
           variant="light"

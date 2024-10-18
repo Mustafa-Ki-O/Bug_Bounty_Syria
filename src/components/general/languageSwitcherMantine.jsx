@@ -5,12 +5,18 @@ import classes from "../../assets/css/LanguagePicker.module.css";
 import syria from "../../assets/vectors/syria_round_icon_64.png";
 import england from "../../assets/vectors/united_kingdom_round_icon_64.png";
 import { useTranslation } from "react-i18next";
-
+import { useEffect } from "react";
 export function LanguagePicker() {
   const { t, i18n } = useTranslation();
 
+  const [lang, setLang] = useState(localStorage.getItem('lang'));
+  useEffect(() => {
+    document.getElementById('root').setAttribute('dir', lang === 'en' ? 'rtl' : 'ltr');
+  }, [lang]);
+
   const handleLanguageChange = (item) => {
     localStorage.setItem("lang", item.value);
+    setLang(item.value);
     i18n.changeLanguage(item.value);
   };
 
@@ -20,7 +26,7 @@ export function LanguagePicker() {
   ];
 
   const [opened, setOpened] = useState(false);
-  const lang = localStorage.getItem("lang");
+  // const lang = localStorage.getItem("lang");
 
   const items = data.map((item) => (
     <Menu.Item

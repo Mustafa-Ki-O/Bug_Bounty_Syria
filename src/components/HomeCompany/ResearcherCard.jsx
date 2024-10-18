@@ -2,13 +2,14 @@ import { Card, Image, Text, Button, Group, Stack } from "@mantine/core";
 import star from "../../assets/vectors/star.png";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
+import '../../assets/css/researcherCard.css'
 const ResearcherCard = ({id, name, rate, description, image }) => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
   return (
     <Card
+      className="card"
       shadow="sm"
       padding="lg"
       radius="md"

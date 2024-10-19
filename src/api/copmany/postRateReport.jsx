@@ -1,10 +1,10 @@
-import axiosInstance from '../axiosService'
+import axiosInstance from '../axiosService';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export function FetchReports(activePage) {
+const PostRateReport = (uuid, rate) => {
   return new Promise((resolve, reject) => {
-    axiosInstance.get(`${API_URL}/researcher/reports-researcher?page=${activePage}`)
+    axiosInstance.post(`${API_URL}/company/all_report/rate/${uuid}`, rate)
       .then(response => {
         resolve(response.data);
       })
@@ -14,3 +14,4 @@ export function FetchReports(activePage) {
   });
 };
 
+export default PostRateReport;

@@ -81,7 +81,7 @@ const DrawerNav = ({ opened, close }) => {
                   <h2 style={{ color: "#b21222" }}>
                     {company
                       ? company.data.company.name
-                      : researcher.data.researcher.name}
+                      : researcher? researcher.data.researcher.name :''}
                   </h2>
                 </GridCol>
                 <GridCol>

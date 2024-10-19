@@ -9,15 +9,19 @@ import useFetchHome from "../components/useMutation/company/useFetchHome.jsx";
 import useFetchHomeResearcher from "../components/useMutation/researcher/useFetchHomeResearcher.jsx";
 import Progress from "../components/general/Progress.jsx";
 import Search from "../components/HomeCompany/Search.jsx";
+import PaginationTable from "../components/HomeCompany/PaginationTable.jsx";
 
 const Home = () => {
   const company = localStorage.getItem("company");
   const [progress, setProgress] = useState(false);
-  const { fetch, isLoadingCom } = useFetchHome();
+  const [activePage,setActivePage] = useState(1);
+  const { fetch, isLoadingCom } = useFetchHome(activePage);
   const [data, setData] = useState([]);
   const [companies, setCompanies] = useState([]);
   const { fetchResearcher, isLoading } = useFetchHomeResearcher();
   const [researchers, setResearchers] = useState([]);
+  const [totalPages,setTotalPages] = useState();
+ 
 
   useEffect(() => {
     if (company) {
@@ -25,13 +29,14 @@ const Home = () => {
     } else {
       fetchResearcher(setCompanies);
     }
-  }, []);
+  }, [activePage]);
 
   useEffect(() => {
     if (data) {
       setResearchers(data.researchers);
+      setTotalPages(data.total_pages)
     }
-  }, [data]);
+  }, [data,activePage]);
 
   useEffect(() => {
     setProgress(isLoadingCom || isLoading);
@@ -47,9 +52,10 @@ const Home = () => {
           <Diagrams data={data} />
           <Search
             researchers={researchers}
-            setFilteredResearchers={setFilterdResearchers}
+            setFilteredResearchers = {setFilterdResearchers}
           />
           <Researchers researchers={filteredResearchers} />
+          <PaginationTable totalPages={totalPages} setActivePage={setActivePage} activePage={activePage}/>
         </Container>
       ) : (
         <Stack h="auto" p={20} style={{ rowGap: 40 }}>

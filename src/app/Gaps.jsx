@@ -1,26 +1,54 @@
-import { Box, Container } from "@mantine/core";
+import { Container } from "@mantine/core";
 import GapsTable from "../components/home/gaps/GapsTable";
-import OurSlider from "../components/home/gaps/Slider";
+// import OurSlider from "../components/home/gaps/Slider";
 import GapsTableCompany from "../components/gapsCompany/GapsTableCompany";
 import Progress from "../components/general/Progress";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import PaginationTable from "../components/home/gaps/PaginationTable";
+import useFetchReports from "../components/useMutation/researcher/useFetchReports";
 
 const Gaps = () => {
   const [progress, setProgress] = useState(false);
   const company = localStorage.getItem("company");
+  const [activePage,setActivePage] = useState(1);
+  const [data,setData] = useState({})
+  const [reports,setReports] = useState([])
+  const {fetchAllReports,isLoading} = useFetchReports(activePage)
+  const [totalPages,setTotalPages] = useState();
+  
+  useEffect(() => {
+    if(!company){
+    fetchAllReports(setData);
+    }
+  },[activePage])
+
+  useEffect(()=>{
+    if(data){
+      setReports(data.researchers);
+      setTotalPages(data.total_pages);
+    }
+  },[data,activePage])
+
+  useEffect(() => {
+    setProgress(isLoading);
+  }, [isLoading]);
+  
   return (
     <>
       {progress && <Progress />}
-      <Container fluid p={50}>
+     
         {company ? (
-          <GapsTableCompany setProgress={setProgress} />
+          <Container fluid p={50}>
+             <GapsTableCompany setProgress={setProgress} />
+          </Container>
         ) : (
-          <GapsTable setProgress={setProgress} />
-        )}
-        <Box my={30} style={{ display: "flex", justifyContent: "end" }}>
-          <OurSlider />
-        </Box>
-      </Container>
+          <Container fluid p={50}>
+          <GapsTable  reports={reports}/>
+          <PaginationTable totalPages={totalPages} 
+          activePage={activePage} 
+          setActivePage={setActivePage}/>
+        </Container>
+        )} 
     </>
   );
 };

@@ -3,10 +3,10 @@ import { fetchHomeCompany } from "../../../api/copmany/fetchHomeCompany";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-const useFetchHome = () => {
+const useFetchHome = (activePage) => {
     const navigate = useNavigate()
     const {mutate:fetch ,isLoading: isLoadingCom} = useMutation({
-        mutationFn:(setData) => fetchHomeCompany().then(res => setData(res.data)),
+        mutationFn:(setData) => fetchHomeCompany(activePage).then(res => setData(res.data)),
         onSuccess:() => {
             console.log('تم جلب البيانات بنجاح')     
         },

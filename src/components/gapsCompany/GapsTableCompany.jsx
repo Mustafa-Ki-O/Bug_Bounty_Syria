@@ -1,4 +1,4 @@
-import { Button, Table } from "@mantine/core";
+import { Button, Image, Table } from "@mantine/core";
 import styles from "../../assets/css/gapsTableCompany.module.css";
 import iconButton from "../../assets/vectors/VectorButton.png";
 import { useDisclosure } from "@mantine/hooks";
@@ -13,18 +13,26 @@ const GapsTableCompany = ({ setProgress }) => {
 
   const [opened, { open, close }] = useDisclosure(false);
   const [dataCompany, setDataCompany] = useState([]);
-
-  const { fetchAllReports, isLoading } = useFetchReports();
+  const[reports,setReports] = useState([])
+  const { fetchAllReports, isLoading } = useFetchReports(1);
+  const [productId, setProductId] = useState();
+  const [reportRate,setReportRate] = useState();
 
   useEffect(() => {
     fetchAllReports(setDataCompany);
   }, []);
 
+  useEffect(()=>{
+    if(dataCompany){
+      setReports(dataCompany.reports)
+    }
+  },[dataCompany])
+
   useEffect(() => {
     setProgress(isLoading);
   }, [isLoading]);
 
-  const rows = dataCompany.map((pro) => (
+  const rows = reports && reports.map((pro) => (
     <Table.Tr
       className={styles.tableRowPrograms}
       key={pro.nameProgram}
@@ -68,8 +76,12 @@ const GapsTableCompany = ({ setProgress }) => {
         </Button>{" "}
       </Table.Td>
       <Table.Td>
-        <Button variant="transparent" bd="none" onClick={open}>
-          <img src={iconButton} width={20} />
+        <Button variant="transparent" bd="none" onClick={()=>{
+          open();
+          setProductId(pro.uuid);
+          setReportRate(pro.rate);
+        }}>
+          <Image src={iconButton} w={20} />
         </Button>
       </Table.Td>
     </Table.Tr>
@@ -77,10 +89,11 @@ const GapsTableCompany = ({ setProgress }) => {
 
   return (
     <>
-      <TableCompanyModal opened={opened} close={close} />
+      <TableCompanyModal reportRate={reportRate} uuid={productId} opened={opened} close={close} setProgress={setProgress}/>
       <Table
         className={styles.tableProgram}
         ta="center"
+        h={300}
         stickyHeaderOffset={60}
         style={{
           boxShadow: "0px 4px 4px 0px #00000040",

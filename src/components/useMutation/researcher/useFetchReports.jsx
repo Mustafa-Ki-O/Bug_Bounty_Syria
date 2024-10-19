@@ -2,10 +2,10 @@ import { useMutation } from "react-query";
 import toast from "react-hot-toast";
 import { FetchReports } from "../../../api/researcher/fetchReports";
 
-const useFetchReports = () => {
+const useFetchReports = (activePage) => {
   const { mutate: fetchAllReports, isLoading } = useMutation({
-    mutationFn: (setReports) =>
-      FetchReports().then((res) => setReports(res.data.reports)),
+    mutationFn: (setData) =>
+      FetchReports(activePage).then((res) => setData(res.data)),
     onSuccess: () => {
       console.log("تم جلب البيانات بنجاح");
     },

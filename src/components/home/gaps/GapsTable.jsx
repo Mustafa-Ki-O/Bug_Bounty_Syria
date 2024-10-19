@@ -1,22 +1,13 @@
 import { Button, Table,Anchor } from "@mantine/core";
 import styles from "../../../assets/css/gapsTable.module.css";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
-import useFetchReports from "../../useMutation/researcher/useFetchReports";
+// import { useEffect, useState } from "react";
+// import useFetchReports from "../../useMutation/researcher/useFetchReports";
 
-const GapsTable = ({setProgress}) => {
+const GapsTable = ({reports}) => {
   const { t } = useTranslation();
-  const [reports,setReports] = useState([])
-  const {fetchAllReports,isLoading} = useFetchReports(setReports)
   
-  useEffect(() => {
-    fetchAllReports(setReports);
-  },[])
-
-  useEffect(() => {
-    setProgress(isLoading);
-  }, [isLoading]);
-  const prefix = "https://api.bug-bounty.darrebni.net/storage/app/public/";
+  // const prefix = "https://api.bug-bounty.darrebni.net/storage/app/public/";
   const rows =reports?.length > 0 ? reports.map((pro) => (
     <Table.Tr
       className={styles.tableRowPrograms}
@@ -30,7 +21,7 @@ const GapsTable = ({setProgress}) => {
       <Table.Td visibleFrom="md">{pro.created_at}</Table.Td>
       <Table.Td visibleFrom="md">
       <Anchor
-            href={pro.file.replace(prefix, '')}
+            href={pro.file}
             target="_blank"
             inherit
             td='underline'

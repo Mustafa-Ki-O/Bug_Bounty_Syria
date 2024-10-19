@@ -1,8 +1,27 @@
 import { Modal, Button, Container, Group, Rating } from "@mantine/core";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 // import image from "../../../assets/images/Clip path group.png";
-function TableCompanyModal({ opened, close }) {
+import useRateReport from "../useMutation/company/useRateReport";
+
+function TableCompanyModal({ uuid, reportRate, opened, close ,setProgress}) {
   const { t } = useTranslation();
+  const {rateReport,isLoading} = useRateReport(uuid);
+  const [rate,setRate] = useState(reportRate)
+
+  const formRate = new FormData();
+
+ const handleSubmit = () => {
+  if(rate){
+    formRate.append('rate',rate)
+    rateReport(formRate);
+  }
+  close()
+ }
+ useEffect(()=>{
+  setProgress(isLoading)
+ },[isLoading])
+
 
   return (
     <>
@@ -38,7 +57,7 @@ function TableCompanyModal({ opened, close }) {
             </p>
             <Modal.Body bg="#eee" p={30}>
               <Group justify="center" align="center">
-                <Rating fractions={3} defaultValue={3} size="xl" />
+                <Rating fractions={3}  value={rate} onChange={setRate}  size="xl" />
               </Group>
             </Modal.Body>
             <div
@@ -58,7 +77,7 @@ function TableCompanyModal({ opened, close }) {
               >
                 {t("رجوع")}
               </Button>
-              <Button variant="filled" color="#B21222" w={130} radius={8}>
+              <Button onClick={handleSubmit} variant="filled" color="#B21222" w={130} radius={8}>
                 {t("ارسال التقييم")}
               </Button>
             </div>

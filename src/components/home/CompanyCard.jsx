@@ -18,7 +18,11 @@ const CompanyCard = ({companyName,domain,description,type,numEmployees,image,id}
       <Text size="md">
       {companyName}
       </Text>
-         <Image src={image} w={30} h={30} radius='50%' style={{filter:'drop-shadow(0px 1px 2px #000)'}}/>
+         <Image src={image} 
+            w={50}
+            h={50}
+            radius='50%' 
+            style={{filter:'drop-shadow(0px 1px 2px #000)'}}/>
       </Group>
       <Group justify='flex-end' gap={3}>
         <Image src={newWindow}  w={15} alt='...' style={{filter:'drop-shadow(0 1px 1px #000 )'}}/>

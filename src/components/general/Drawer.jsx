@@ -65,11 +65,13 @@ const DrawerNav = ({ opened, close }) => {
           ) : (
             <>
               <Grid mt={30} gutter={20} justify="center" align="center">
-                <GridCol mb={30} span={6}>
+                <GridCol  span={6} >
                   <Image
                     radius="50%"
-                    w="100%"
+                    w={70}
+                    h={70}
                     src={image}
+                    onClick={()=>navigate('/profile')}
                     style={{
                       cursor: "pointer",
                       border: "1px solid red",
@@ -77,14 +79,14 @@ const DrawerNav = ({ opened, close }) => {
                     }}
                   />
                 </GridCol>
-                <GridCol span={6}>
+                <GridCol span={6} p={0}>
                   <h2 style={{ color: "#b21222" }}>
                     {company
                       ? company.data.company.name
-                      : researcher? researcher.data.researcher.name :''}
+                      : researcher? researcher.data.researcher.name :'لا يوجد مستخدم'}
                   </h2>
                 </GridCol>
-                <GridCol>
+                <GridCol mt={15}>
                   <Button fullWidth variant="outline" color="#B21222">
                     الاشعارات
                     <Image

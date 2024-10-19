@@ -1,4 +1,4 @@
-import { Button, Image, Table } from "@mantine/core";
+import { Button, Image, Table ,Anchor, Tooltip, Box} from "@mantine/core";
 import styles from "../../assets/css/gapsTableCompany.module.css";
 import iconButton from "../../assets/vectors/VectorButton.png";
 import { useDisclosure } from "@mantine/hooks";
@@ -43,37 +43,51 @@ const GapsTableCompany = ({ setProgress }) => {
       <Table.Td>{pro.title}</Table.Td>
       <Table.Td>{pro.researcher.name}</Table.Td>
       <Table.Td>{pro.created_at}</Table.Td>
-      <Table.Td>{pro.file}</Table.Td>
-      <Table.Td>
-        <Button
-          variant="light"
+      <Table.Td visibleFrom="md">
+        <Tooltip label={t(`${pro.file}`)} bg='#b21222'> 
+        <Anchor
+            href={pro.file}
+            target="_blank"
+            inherit
+            td='underline'
+            c='#b21222'
+            justify="end"
+            style={{ color: "black", marginRight: "10px" }}
+          >
+            قراءة ملف الثغرة
+          </Anchor>
+          </Tooltip>
+      </Table.Td>
+      <Table.Td style={{placeItems:'center'}}>
+        <Box
           w={100}
+          p={10}
           bg={
-            pro.status === "Accept"
+            pro.status === "accept"
               ? "#16C09861"
-              : pro.status === "Reject"
+              : pro.status === "reject"
               ? "#FFC5C5"
               : "#58595B1A"
           }
           c={
-            pro.status === "Accept"
+            pro.status === "accept"
               ? "#00B087"
-              : pro.status === "Reject"
+              : pro.status === "reject"
               ? "#DF0404"
               : "#58595B"
           }
           style={{
             border: `${
-              pro.status === "Accept"
+              pro.status === "accept"
                 ? "1px solid #00B087"
-                : pro.status === "Reject"
+                : pro.status === "reject"
                 ? "1px solid #DF0404"
                 : "1px solid #58595B"
-            }`,
+            }`, borderRadius:5
           }}
         >
           {pro.status}
-        </Button>{" "}
+        </Box>{" "}
       </Table.Td>
       <Table.Td>
         <Button variant="transparent" bd="none" onClick={()=>{
@@ -103,7 +117,7 @@ const GapsTableCompany = ({ setProgress }) => {
           <Table.Tr c="#9CA3AF" ta="center">
             <Table.Th ta="center">{t("اسم الثغرة")}</Table.Th>
             <Table.Th ta="center">{t("اسم الشركة")}</Table.Th>
-            <Table.Th ta="center">{t("تاريخ الارسال")}</Table.Th>
+            <Table.Th ta="center" visibleFrom="md">{t("تاريخ الارسال")}</Table.Th>
             <Table.Th ta="center">{t("ملف الثغرة")}</Table.Th>
             <Table.Th ta="center">{t("حالة الثغرة")}</Table.Th>
             <Table.Th ta="center">{t("تقييم الثغرة")}</Table.Th>

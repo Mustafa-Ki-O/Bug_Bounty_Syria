@@ -16,22 +16,8 @@ const useFetchResearcher = (setSelectedRes, setResReports) => {
     onSuccess: () => {
       console.log("تم جلب البيانات بنجاح");
     },
-    onError: (err) => {
-      if (err.response) {
-        const { status } = err.response;
-        console.log("Response status:", status);
-        if (status === 500) {
-          navigate("/server-error");
-        } else if (status === 404) {
-          navigate("/not-found");
-        } else if (status === 401) {
-          navigate("/unauthorized");
-        } else if (err.request) {
-          navigate("/network-error");
-        }
-      } else {
+    onError: () => {
         toast.error("حدث خطأ ,اعد المحاولة ثانيةً");
-      }
     },
   });
 

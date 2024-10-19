@@ -12,18 +12,6 @@ const Diagrams = ({ data }) => {
 
   const numBugs = accept + pendings;
 
-  // const numOfBugs = bugs.length;
-  // const numOfAcceptedBugs = bugs.filter(
-  //   (bug) => bug.status === "Accept"
-  // ).length;
-  // const numOfRejectedBugs = bugs.filter(
-  //   (bug) => bug.status === "Reject"
-  // ).length;
-  // const numOfPendingBugs = numOfBugs - (numOfAcceptedBugs + numOfRejectedBugs);
-
-  // const acceptedPercentage = (numOfAcceptedBugs * 100) / numOfBugs;
-  // const rejectedPercentage = (numOfRejectedBugs * 100) / numOfBugs;
-
   return (
     <Box
       p={20}
@@ -50,8 +38,8 @@ const Diagrams = ({ data }) => {
         size={140}
         thickness={34}
         data={[
-          { name: "Accept", value: accept, color: "green" },
-          { name: "Pending", value: pendings, color: "gray" },
+          { name: "Accept", value: accept, color: "#00bf00" },
+          { name: "Pending", value: pendings, color: "#b21222" },
         ]}
       />
       <Flex justify="space-between" align="center" p={10}>

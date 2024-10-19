@@ -18,7 +18,7 @@ const Researchers = ({ researchers }) => {
                 <ResearcherCard
                   id={res.uuid}
                   name={res.name}
-                  rate={res.rate}
+                  points={res.points}
                   description={res.description}
                   image={res.image}
                 />

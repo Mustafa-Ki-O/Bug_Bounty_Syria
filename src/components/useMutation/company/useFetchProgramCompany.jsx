@@ -2,10 +2,10 @@ import { useMutation } from "react-query";
 import toast from "react-hot-toast";
 import fetchProgramCompany from "../../../api/copmany/fetchProgramCompany";
 
-const useFetchProgramCompany = () => {
+const useFetchProgramCompany = (activePage) => {
   const { mutate: fetchProgram, isLoading } = useMutation({
     mutationFn: (setData) =>
-      fetchProgramCompany().then((res) => setData(res.data.products)),
+      fetchProgramCompany(activePage).then((res) => setData(res.data)),
     onSuccess: () => {
       console.log("تم جلب البرامج بنجاح");
     },

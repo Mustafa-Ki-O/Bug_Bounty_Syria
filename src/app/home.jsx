@@ -15,12 +15,13 @@ const Home = () => {
   const company = localStorage.getItem("company");
   const [progress, setProgress] = useState(false);
   const [activePage,setActivePage] = useState(1);
+  const [totalPages,setTotalPages] = useState();
   const { fetch, isLoadingCom } = useFetchHome(activePage);
   const [data, setData] = useState([]);
   const [companies, setCompanies] = useState([]);
   const { fetchResearcher, isLoading } = useFetchHomeResearcher();
   const [researchers, setResearchers] = useState([]);
-  const [totalPages,setTotalPages] = useState();
+ 
  
 
   useEffect(() => {

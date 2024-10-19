@@ -1,10 +1,8 @@
 import { useMutation } from "react-query";
 import { fetchHomeCompany } from "../../../api/copmany/fetchHomeCompany";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 const useFetchHome = (activePage) => {
-    const navigate = useNavigate()
     const {mutate:fetch ,isLoading: isLoadingCom} = useMutation({
         mutationFn:(setData) => fetchHomeCompany(activePage).then(res => setData(res.data)),
         onSuccess:() => {

@@ -5,26 +5,22 @@ import add from "../../assets/vectors/VectorAdd.png";
 import AddProgramModal from "./AddProgramModal";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslation } from "react-i18next";
-import useDeleteProduct from "../useMutation/company/useDeleteProduct";
-import { useEffect } from "react";
-
-function AddProgramTable({ data, fetchData,setData ,setProgress}) {
+import { useState} from "react";
+import DeleteProductModal from "./DeleteModal";
+function AddProgramTable({ fetchData,setData ,setProgress,products,setProducts}) {
   const { t } = useTranslation();
 
   const [opened, { open, close }] = useDisclosure(false);
+  
+  const [show,setShow] = useState(false);
+  const [productId,setProductId] = useState()
 
-  const{deletePro,isLoading} = useDeleteProduct(fetchData,setData);
-  const handleDelete = (uuid) => {
-    const formData = new FormData();
-    formData.append("uuid", uuid);
-    deletePro(formData);
+  const handleShowModal = (uuid) => {
+    setProductId(uuid);
+    setShow(true);
   };
 
-  useEffect(()=>{
-    setProgress(isLoading)
-  },[isLoading])
-
-  const rows = data.map((pro) => (
+  const rows = products && products.map((pro) => (
     <Table.Tr
       className={styles.tableRowPrograms}
       key={pro.nameProgram}
@@ -39,7 +35,7 @@ function AddProgramTable({ data, fetchData,setData ,setProgress}) {
         </Table.Td>
         <Table.Td>
         <Button
-          onClick={() => handleDelete(pro.uuid)}
+          onClick={() => handleShowModal(pro.uuid)}
           variant="transparent"
         >
           <Image src={trash} w={20} />
@@ -50,6 +46,14 @@ function AddProgramTable({ data, fetchData,setData ,setProgress}) {
 
   return (
     <>
+    <DeleteProductModal 
+    productId={productId}
+    opened={show}
+    close={()=>setShow(false)}
+    fetchData={fetchData}
+    setData={setData}
+    setProgress={setProgress}
+    />
       <AddProgramModal opened={opened} close={close} setData={setData} fetchData={fetchData} setProgress={setProgress}/>
       <Container px={40} fluid>
         <Table

@@ -100,5 +100,11 @@
   "تقييم الباحث" : "Rate",
   "تواصل مباشر":"Contact",
   "أرشيف الثفرات المقبولة": "Accepted bug reports",
-  "الحالة":"Status"
+  "الحالة":"Status",
+  "التقييم" :"Rating",
+  "مئات الباحثين الامنيين ..هل تبحث عن أحد ؟؟":" ?? Hundreds of security researchers. Are you looking for someone",
+  "... ابحث عن االباحث الأفضل":"Find the best researcher",
+  "قراءة ملف الثغرة":"Read the file",
+  "ملف البرنامج":"link",
+  "بحث":"Search"
 }

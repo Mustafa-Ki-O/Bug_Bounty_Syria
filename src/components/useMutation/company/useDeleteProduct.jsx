@@ -8,6 +8,7 @@ const useDeleteProduct = (fetchData,setData) => {
         mutationFn:(formData) => deleteProduct(formData),
         onSuccess:() => {
             fetchData(setData);
+            toast.success('تم حذف البرنامج بنجاح')
         },
         onError : (err) => {
             console.log('ERROR', err);

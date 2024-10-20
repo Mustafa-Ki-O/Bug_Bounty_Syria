@@ -1,6 +1,7 @@
 import { Table } from "@mantine/core";
 import styles from "../../assets/css/tablePrograms.module.css";
 import { useTranslation } from "react-i18next";
+import NoData from "../general/NoData";
 
 function TableReports({ data }) {
 
@@ -16,12 +17,13 @@ function TableReports({ data }) {
     >
       <Table.Td>{rep.title}</Table.Td>
       <Table.Td>{rep.created_at}</Table.Td>
-      <Table.Td>{rep.status}</Table.Td>
+      <Table.Td>{rep.rate}</Table.Td>
     </Table.Tr>
   ));
 
   return (
     <>
+    {data && data.length > 0 ? (
     <Table
       className={styles.tableProgram}
       h={363}
@@ -36,11 +38,12 @@ function TableReports({ data }) {
         <Table.Tr c="#B21222" ta="center">
           <Table.Th ta="center">{t("اسم البرنامج")}</Table.Th>
           <Table.Th ta="center">{t("تاريخ الارسال")}</Table.Th>
-          <Table.Th ta="center">{t("الحالة")}</Table.Th>
+          <Table.Th ta="center">{t("التقييم")}</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody bg="#FFFFFF">{rows}</Table.Tbody>
     </Table>
+    ):(<NoData/>)}
     </>
   );
 }

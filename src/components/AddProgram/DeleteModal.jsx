@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import useDeleteProduct from "../useMutation/company/useDeleteProduct";
 import { useEffect } from "react";
 
-const DeleteProductModal = ({productId,opened,close,fetchData,setData,setProgress}) => {
+const DeleteProductModal = ({productId,opened,setShow,fetchData,setData,setProgress}) => {
     const { t } = useTranslation();
     const{deletePro,isLoading} = useDeleteProduct(fetchData,setData);
     
@@ -11,7 +11,7 @@ const DeleteProductModal = ({productId,opened,close,fetchData,setData,setProgres
         const formData = new FormData();
         formData.append("uuid", productId);
         deletePro(formData);
-        close;
+        setShow(false)
     }
 
     useEffect(()=>{

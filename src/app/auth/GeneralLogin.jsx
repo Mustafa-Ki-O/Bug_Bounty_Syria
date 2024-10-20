@@ -20,9 +20,9 @@ const GeneralLogin = () => {
   return (
     <>
       {progress && <Progress />}
-      <Container fluid w={{ lg: "70%" }} p={30} m="auto">
+      <Container mb={40} fluid w={{lg:'40%',md:'70%',sm:'90%',xs:'100%'}} p={30} m="auto">
         <Stack
-          w={{ lg: "50%" }}
+          w={{ lg: "100%" }}
           m="auto"
           bg="#F9F9F9"
           p={30}

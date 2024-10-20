@@ -17,7 +17,6 @@ import GeneralLogin from "../app/auth/GeneralLogin"
 import NotFound from "../app/errors/NotFound"
 import InternalServer from "../app/errors/InternalServer"
 import Unauthorized from "../app/errors/Unauthorized"
-import NetworkError from "../app/errors/NetworkError"
 
 const route = createBrowserRouter([
     {
@@ -92,10 +91,6 @@ const route = createBrowserRouter([
            {
             path:'unauthorized',
             element:<Unauthorized/>
-           },
-           {
-            path:'network-error',
-            element:<NetworkError/>
            }
         ]
     }

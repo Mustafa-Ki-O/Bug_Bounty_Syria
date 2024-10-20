@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import SendReportModal from "./SendReportModal";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
+import NoData from "../general/NoData";
 
 function TablePrograms({ data, setProgress }) {
   const [opened, { open, close }] = useDisclosure(false);
@@ -54,6 +55,7 @@ function TablePrograms({ data, setProgress }) {
   return (
     <>
     <SendReportModal setProgress={setProgress} opened={opened} close={close} uuid={productId}/>
+    {data && data.length > 0 ? (
     <Table
       className={styles.tableProgram}
       h={363}
@@ -74,6 +76,9 @@ function TablePrograms({ data, setProgress }) {
       </Table.Thead>
       <Table.Tbody bg="#FFFFFF">{rows}</Table.Tbody>
     </Table>
+    ):(
+      <NoData/>
+    )}
     </>
   );
 }

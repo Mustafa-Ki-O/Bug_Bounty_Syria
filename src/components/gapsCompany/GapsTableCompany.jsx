@@ -1,12 +1,13 @@
-import { Button, Image, Table ,Anchor, Tooltip, Box} from "@mantine/core";
+import { Button, Table ,Anchor, Box} from "@mantine/core";
 import styles from "../../assets/css/gapsTableCompany.module.css";
 import iconButton from "../../assets/vectors/VectorButton.png";
 import { useDisclosure } from "@mantine/hooks";
 import TableCompanyModal from "./TableCompanyModal";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-// import { fetchReports } from "../../api/copmany/fetchReports";
 import useFetchReports from "../useMutation/company/useFetchReports";
+import PaginationTable from "../general/PaginationTable";
+import NoData from "../general/NoData";
 
 const GapsTableCompany = ({ setProgress }) => {
   const { t } = useTranslation();
@@ -14,19 +15,23 @@ const GapsTableCompany = ({ setProgress }) => {
   const [opened, { open, close }] = useDisclosure(false);
   const [dataCompany, setDataCompany] = useState([]);
   const[reports,setReports] = useState([])
-  const { fetchAllReports, isLoading } = useFetchReports(1);
+  const [activePage,setActivePage] = useState(1)
+  const { fetchAllReports, isLoading } = useFetchReports(activePage);
+  const[totalPages,setTotalPages] = useState()
   const [productId, setProductId] = useState();
-  const [reportRate,setReportRate] = useState();
-
+  const [reportRate,setReportRate] = useState()
+  
   useEffect(() => {
     fetchAllReports(setDataCompany);
-  }, []);
+  }, [activePage]);
 
   useEffect(()=>{
     if(dataCompany){
+      setTotalPages(dataCompany.total_pages)
       setReports(dataCompany.reports)
     }
-  },[dataCompany])
+
+  },[dataCompany,activePage])
 
   useEffect(() => {
     setProgress(isLoading);
@@ -42,10 +47,9 @@ const GapsTableCompany = ({ setProgress }) => {
     >
       <Table.Td>{pro.title}</Table.Td>
       <Table.Td>{pro.researcher.name}</Table.Td>
-      <Table.Td>{pro.created_at}</Table.Td>
-      <Table.Td visibleFrom="md">
-        <Tooltip label={t(`${pro.file}`)} bg='#b21222'> 
-        <Anchor
+      <Table.Td visibleFrom="md">{pro.created_at}</Table.Td>
+      <Table.Td>
+      <Anchor
             href={pro.file}
             target="_blank"
             inherit
@@ -54,14 +58,13 @@ const GapsTableCompany = ({ setProgress }) => {
             justify="end"
             style={{ color: "black", marginRight: "10px" }}
           >
-            قراءة ملف الثغرة
+            {t("قراءة ملف الثغرة")}
           </Anchor>
-          </Tooltip>
-      </Table.Td>
-      <Table.Td style={{placeItems:'center'}}>
+        </Table.Td>
+      <Table.Td>
         <Box
           w={100}
-          p={10}
+          p={4}
           bg={
             pro.status === "accept"
               ? "#16C09861"
@@ -77,13 +80,15 @@ const GapsTableCompany = ({ setProgress }) => {
               : "#58595B"
           }
           style={{
+            borderRadius:8,
+            justifySelf:'center',
             border: `${
               pro.status === "accept"
                 ? "1px solid #00B087"
-                : pro.status === "reject"
+                : pro.status === "Reject"
                 ? "1px solid #DF0404"
                 : "1px solid #58595B"
-            }`, borderRadius:5
+            }`,
           }}
         >
           {pro.status}
@@ -95,15 +100,19 @@ const GapsTableCompany = ({ setProgress }) => {
           setProductId(pro.uuid);
           setReportRate(pro.rate);
         }}>
-          <Image src={iconButton} w={20} />
+          <img src={iconButton} width={20} />
         </Button>
+       
+        
       </Table.Td>
     </Table.Tr>
   ));
 
   return (
     <>
-      <TableCompanyModal reportRate={reportRate} uuid={productId} opened={opened} close={close} setProgress={setProgress}/>
+       <TableCompanyModal reportRate={reportRate} uuid={productId} opened={opened} close={close} setProgress={setProgress}/>
+    {reports && reports.length > 0 ?(
+      <>
       <Table
         className={styles.tableProgram}
         ta="center"
@@ -125,7 +134,14 @@ const GapsTableCompany = ({ setProgress }) => {
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
       </Table>
-    </>
+      <PaginationTable 
+      totalPages={totalPages}
+      activePage={activePage}
+      setActivePage={setActivePage}/> 
+      </>) :(
+    <NoData/>
+    )}
+        </>
   );
 };
 

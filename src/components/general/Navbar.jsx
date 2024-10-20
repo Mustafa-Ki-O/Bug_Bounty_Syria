@@ -64,13 +64,13 @@ const Navbar = () => {
           }}
         >
           <Flex justify="space-between" align="center">
-            <Burger size="md" lineSize={2} hiddenFrom="sm" onClick={open} />
+            <Burger size="md" lineSize={2} hiddenFrom="md" onClick={open} />
             <Link to="/home">
-              <Image src={vector} w={90} p={5} hiddenFrom="sm" />
+              <Image src={vector} w={90} p={5} hiddenFrom="md" />
             </Link>
           </Flex>
           <Container
-            visibleFrom="sm"
+            visibleFrom="md"
             fluid
             style={{
               display: "flex",

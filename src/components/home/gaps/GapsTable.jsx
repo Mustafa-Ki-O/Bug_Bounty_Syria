@@ -1,8 +1,7 @@
-import { Button, Table,Anchor } from "@mantine/core";
+import { Box, Table,Anchor } from "@mantine/core";
 import styles from "../../../assets/css/gapsTable.module.css";
 import { useTranslation } from "react-i18next";
-// import { useEffect, useState } from "react";
-// import useFetchReports from "../../useMutation/researcher/useFetchReports";
+import NoData from "../../general/NoData";
 
 const GapsTable = ({reports}) => {
   const { t } = useTranslation();
@@ -29,13 +28,13 @@ const GapsTable = ({reports}) => {
             justify="end"
             style={{ color: "black", marginRight: "10px" }}
           >
-            قراءة ملف الثغرة
+            {t("قراءة ملف الثغرة")}
           </Anchor>
       </Table.Td>
       <Table.Td>
-        <Button
-          variant="light"
+      <Box
           w={100}
+          p={4}
           bg={
             pro.status === "accept"
               ? "#16C09861"
@@ -51,23 +50,27 @@ const GapsTable = ({reports}) => {
               : "#58595B"
           }
           style={{
+            borderRadius:8,
+            justifySelf:'center',
             border: `${
               pro.status === "accept"
                 ? "1px solid #00B087"
-                : pro.status === "reject"
+                : pro.status === "Reject"
                 ? "1px solid #DF0404"
                 : "1px solid #58595B"
             }`,
           }}
         >
           {pro.status}
-        </Button>{" "}
+        </Box>{" "}
       </Table.Td>
       <Table.Td>{pro.rate}/10</Table.Td>
     </Table.Tr>
   )) : [];
 
   return (
+  <>
+    {reports && reports.length > 0 ? (  
     <Table
       className={styles.tableProgram}
       h={363}
@@ -90,7 +93,8 @@ const GapsTable = ({reports}) => {
       </Table.Thead>
       <Table.Tbody >{rows}</Table.Tbody>
     </Table>
-  );
+  ):(<NoData/>)}
+ </> );
 };
 
 export default GapsTable;

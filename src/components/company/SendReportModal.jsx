@@ -82,7 +82,7 @@ function SendReportModal({ opened, close, uuid ,setProgress}) {
           style={{ position: "absolute", right: 0 }}
         >
           <form onSubmit={form.onSubmit(handleSubmit)}>
-            <Stack align="center" p={20}>
+            <Stack align="center" p={20} gap={20}>
               <h3 style={{ marginTop: 0 }}>{t("رفع تقرير جديد")}</h3>
               <TextInput
                 data-autofocus
@@ -99,7 +99,6 @@ function SendReportModal({ opened, close, uuid ,setProgress}) {
                  radius="md"
                  w={250}
                  key={form.key('report_file')}
-                 description="Input description"
                  rightSection={<img src={sendIcon} width={20}/>}
                  {...form.getInputProps('report_file')}
                   />

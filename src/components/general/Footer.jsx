@@ -9,7 +9,7 @@ const Footer = () => {
   const icons =[instagramIcon,facebookIcon,linkedinIcon,xIcon]
   return (
     <>
-      <AppShell >
+      <AppShell mt={60}>
         <AppShell.Footer bd='none' style={{ position: 'absolute' ,bottom:0,backgroundColor:'transparent',alignItems:'center',padding:'20px 40px',marginTop:20 }}>
           <Flex visibleFrom="sm" justify='space-between'>
             <Group>

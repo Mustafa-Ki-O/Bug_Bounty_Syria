@@ -5,12 +5,15 @@ import { useTranslation } from "react-i18next";
 const Diagrams = ({ data }) => {
   const { t } = useTranslation();
 
-  const accept = data["count_accept"];
-  const pendings = data["count_pending"];
-  const acceptPercent = data["count_accept_percent"];
-  const pendingPercent = data["count_pending_percent"];
+  const accept = data["count_accept"] || 0; // توفير قيمة افتراضية
+  const pendings = data["count_pending"] || 0; // توفير قيمة افتراضية
+  const acceptPercent = data["count_accept_percent"] || 0; // توفير قيمة افتراضية
+  const pendingPercent = data["count_pending_percent"] || 0; // توفير قيمة افتراضية
 
   const numBugs = accept + pendings;
+
+  let acceptPercentFixed = acceptPercent.toFixed(2);
+  let pendingPercentFixed = pendingPercent.toFixed(2);
 
   return (
     <Box
@@ -26,7 +29,6 @@ const Diagrams = ({ data }) => {
           {t("إحصائية الثغرات")}
         </Text>
         <Text size="sm" c="#9C9C9C">
-          {" "}
           {t("ثغرات")} {numBugs}
         </Text>
       </Group>
@@ -57,7 +59,7 @@ const Diagrams = ({ data }) => {
               backgroundColor: "green",
             }}
           ></span>
-          {acceptPercent}% Accept
+          {acceptPercentFixed}% Accept
         </Text>
         <Text
           size="md"
@@ -73,7 +75,7 @@ const Diagrams = ({ data }) => {
               backgroundColor: "red",
             }}
           ></span>
-          {pendingPercent}% Not accept
+          {pendingPercentFixed}% Not accept
         </Text>
       </Flex>
     </Box>

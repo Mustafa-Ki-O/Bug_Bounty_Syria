@@ -1,4 +1,4 @@
-import { Box, Button, Container, Table ,Image} from "@mantine/core";
+import { Box, Button, Container, Table ,Image, Tooltip, Anchor} from "@mantine/core";
 import styles from "../../assets/css/addProgramTable.module.css";
 import trash from "../../assets/vectors/trash.png";
 import add from "../../assets/vectors/VectorAdd.png";
@@ -7,7 +7,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { useTranslation } from "react-i18next";
 import { useState} from "react";
 import DeleteProductModal from "./DeleteModal";
-function AddProgramTable({ fetchData,setData ,setProgress,products,setProducts}) {
+import NoData from "../general/NoData";
+function AddProgramTable({ fetchData,setData ,setProgress,products}) {
   const { t } = useTranslation();
 
   const [opened, { open, close }] = useDisclosure(false);
@@ -29,7 +30,17 @@ function AddProgramTable({ fetchData,setData ,setProgress,products,setProducts})
       style={{ borderBottom: "none" }}
     >
       <Table.Td>{pro.title}</Table.Td>
-      <Table.Td>{pro.url}</Table.Td>
+      <Table.Td>
+        <Tooltip label={pro.url} color="#b21222">
+        <Anchor
+        href={pro.url}
+        target="_blank"
+        c="#b21222"
+        bg='transpernet'>
+         {t('ملف البرنامج')}
+        </Anchor>
+        </Tooltip>
+        </Table.Td>
       <Table.Td>
         {pro.description}
         </Table.Td>
@@ -49,13 +60,15 @@ function AddProgramTable({ fetchData,setData ,setProgress,products,setProducts})
     <DeleteProductModal 
     productId={productId}
     opened={show}
-    close={()=>setShow(false)}
+    setShow={setShow}
     fetchData={fetchData}
     setData={setData}
     setProgress={setProgress}
     />
       <AddProgramModal opened={opened} close={close} setData={setData} fetchData={fetchData} setProgress={setProgress}/>
       <Container px={40} fluid>
+        {products && products.length > 0 ? (
+          <>
         <Table
           className={styles.tableProgram}
           h={363}
@@ -81,6 +94,8 @@ function AddProgramTable({ fetchData,setData ,setProgress,products,setProducts})
             {t("اضافة برنامج جديد")}
           </Button>
         </Box>
+        </>
+        ):(<NoData/>)}
       </Container>
     </>
   );

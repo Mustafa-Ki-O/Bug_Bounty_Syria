@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 // import fetchProgramCompany from "../api/copmany/fetchProgramCompany";
 import Progress from '../components/general/Progress';
 import useFetchProgramCompany from '../components/useMutation/company/useFetchProgramCompany';
-import PaginationTable from '../components/AddProgram/PaginationTable';
+import PaginationTable from '../components/general/PaginationTable';
 
 const AddProgram = () => {
   const [data, setData] = useState([]);

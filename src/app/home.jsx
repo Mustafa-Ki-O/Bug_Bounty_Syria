@@ -9,7 +9,7 @@ import useFetchHome from "../components/useMutation/company/useFetchHome.jsx";
 import useFetchHomeResearcher from "../components/useMutation/researcher/useFetchHomeResearcher.jsx";
 import Progress from "../components/general/Progress.jsx";
 import Search from "../components/HomeCompany/Search.jsx";
-import PaginationTable from "../components/HomeCompany/PaginationTable.jsx";
+import PaginationTable from "../components/general/PaginationTable.jsx";
 
 const Home = () => {
   const company = localStorage.getItem("company");

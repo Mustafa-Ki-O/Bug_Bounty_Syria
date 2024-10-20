@@ -4,7 +4,7 @@ import GapsTable from "../components/home/gaps/GapsTable";
 import GapsTableCompany from "../components/gapsCompany/GapsTableCompany";
 import Progress from "../components/general/Progress";
 import { useState,useEffect } from "react";
-import PaginationTable from "../components/home/gaps/PaginationTable";
+import PaginationTable from "../components/general/PaginationTable";
 import useFetchReports from "../components/useMutation/researcher/useFetchReports";
 
 const Gaps = () => {

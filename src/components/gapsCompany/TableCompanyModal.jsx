@@ -1,7 +1,6 @@
 import { Modal, Button, Container, Group, Rating } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-// import image from "../../../assets/images/Clip path group.png";
 import useRateReport from "../useMutation/company/useRateReport";
 
 function TableCompanyModal({ uuid, reportRate, opened, close ,setProgress}) {
@@ -57,7 +56,7 @@ function TableCompanyModal({ uuid, reportRate, opened, close ,setProgress}) {
             </p>
             <Modal.Body bg="#eee" p={30}>
               <Group justify="center" align="center">
-                <Rating fractions={3}  value={rate} onChange={setRate}  size="xl" />
+                <Rating fractions={1}  value={rate} onChange={setRate}  size="xl" />
               </Group>
             </Modal.Body>
             <div

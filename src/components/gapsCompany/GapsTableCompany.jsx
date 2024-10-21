@@ -101,9 +101,7 @@ const GapsTableCompany = ({ setProgress }) => {
           setReportRate(pro.rate);
         }}>
           <img src={iconButton} width={20} />
-        </Button>
-       
-        
+        </Button>    
       </Table.Td>
     </Table.Tr>
   ));

@@ -6,6 +6,7 @@ import Progress from "../components/general/Progress";
 import { useState,useEffect } from "react";
 import PaginationTable from "../components/general/PaginationTable";
 import useFetchReports from "../components/useMutation/researcher/useFetchReports";
+import ToTop from "../components/general/ToTop";
 
 const Gaps = () => {
   const [progress, setProgress] = useState(false);
@@ -33,10 +34,11 @@ const Gaps = () => {
     setProgress(isLoading);
   }, [isLoading]);
   
+  
   return (
     <>
       {progress && <Progress />}
-     
+      <ToTop/>
         {company ? (
           <Container fluid p={50}>
              <GapsTableCompany setProgress={setProgress} />

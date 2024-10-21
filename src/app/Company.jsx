@@ -5,6 +5,7 @@ import { Stack } from "@mantine/core";
 import { useEffect, useState } from "react";
 import useFetchCompany from "../components/useMutation/researcher/useFetchCompany";
 import Progress from "../components/general/Progress";
+import ToTop from "../components/general/ToTop";
 const Company = () => {
   const { id } = useParams();
   const [progress, setProgress] = useState(false);
@@ -24,8 +25,11 @@ const Company = () => {
     setProgress(isLoading);
   }, [isLoading]);
 
+
+
   return (
     <>
+    <ToTop/>
       {progress && <Progress />}
       <Stack p={20}>
         <SelectedCompany selectedCompany={selectedCompany} />

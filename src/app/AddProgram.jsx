@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Progress from '../components/general/Progress';
 import useFetchProgramCompany from '../components/useMutation/company/useFetchProgramCompany';
 import PaginationTable from '../components/general/PaginationTable';
+import ToTop from '../components/general/ToTop';
 
 const AddProgram = () => {
   const [data, setData] = useState([]);
@@ -29,9 +30,10 @@ const AddProgram = () => {
     setProgress(isLoading);
   }, [isLoading]);
 
+
     return(
         <>
-        
+        <ToTop/>
         {progress && <Progress/>}
         <Container p={20} m={0} fluid my={10}>
            <AddProgramTable products={products} fetchData={fetchProgram} setData={setData} setProducts={setProducts} setProgress={setProgress}/>

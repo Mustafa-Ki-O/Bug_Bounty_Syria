@@ -5,6 +5,7 @@ import Progress from "../components/general/Progress";
 import { Stack } from "@mantine/core";
 import SelectedRes from "../components/researcher/SelectedRes";
 import Reports from "../components/researcher/Reports";
+import ToTop from "../components/general/ToTop";
 
 const Researcher = () => {
   const { id } = useParams();
@@ -25,8 +26,10 @@ const Researcher = () => {
     setProgress(isLoading);
   }, [isLoading]);
 
+  
   return (
     <>
+    <ToTop/>
       {progress && <Progress />}
       <Stack p={20}>
         <SelectedRes selectedRes={selectedRes} />

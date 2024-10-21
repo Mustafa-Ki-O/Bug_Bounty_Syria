@@ -10,6 +10,7 @@ import useFetchHomeResearcher from "../components/useMutation/researcher/useFetc
 import Progress from "../components/general/Progress.jsx";
 import Search from "../components/HomeCompany/Search.jsx";
 import PaginationTable from "../components/general/PaginationTable.jsx";
+import ToTop from "../components/general/ToTop.jsx";
 
 const Home = () => {
   const company = localStorage.getItem("company");
@@ -43,10 +44,12 @@ const Home = () => {
     setProgress(isLoadingCom || isLoading);
   }, [isLoadingCom || isLoading]);
 
+  
   const [filteredResearchers, setFilterdResearchers] = useState([]);
 
   return (
     <>
+    <ToTop/>
       {progress && <Progress />}
       {company ? (
         <Container p={20} fluid mih="100vh">

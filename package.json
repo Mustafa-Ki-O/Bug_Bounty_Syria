@@ -1,6 +1,14 @@
 {
   "name": "finalapp",
- "homepage": "https://mustafa-ki-o.github.io/Bug_Bounty_Syria/",
+ "homepage": "https://Mustafa-Ki-O.github.io/Bug_Bounty_Syria/",
+ "gh-pages": {
+    "rewrites": [
+      {
+        "from": "**/*",
+        "to": "/"
+      }
+    ]
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",

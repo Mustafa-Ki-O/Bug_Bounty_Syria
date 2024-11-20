@@ -24,7 +24,6 @@ function App() {
     future={{
     v7_startTransition: true,
   }} 
-  basename="/Bug_Bounty_Syria/" 
   router={route} /> }
      <Toaster/>
     </>

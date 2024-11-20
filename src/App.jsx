@@ -20,11 +20,8 @@ function App() {
 
   return (
     <>
-    { show ? <StartPage/> : <RouterProvider 
-    future={{
-    v7_startTransition: true,
-  }} 
-  router={route} /> }
+    { show ? <StartPage/> : <RouterProvider  
+     router={route} /> }
      <Toaster/>
     </>
   )

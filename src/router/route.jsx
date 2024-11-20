@@ -95,7 +95,12 @@ const route = createBrowserRouter([
         ]
     }
     
-])
+],
+{
+  future: {
+    v7_fetcherPersist: true, // Opt-in to the new fetcher behavior
+  },
+})
 
 
 export default route

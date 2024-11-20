@@ -20,7 +20,12 @@ function App() {
 
   return (
     <>
-    { show ? <StartPage/> : <RouterProvider router={route} /> }
+    { show ? <StartPage/> : <RouterProvider 
+    future={{
+    v7_startTransition: true,
+  }} 
+  basename="/Bug_Bounty_Syria/" 
+  router={route} /> }
      <Toaster/>
     </>
   )

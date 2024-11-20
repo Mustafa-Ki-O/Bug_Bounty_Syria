@@ -20,7 +20,7 @@ import Unauthorized from "../app/errors/Unauthorized"
 
 const route = createBrowserRouter([
     {
-        path:'/',
+        path:'/Bug_Bounty_Syria/',
         element:(
         <>
         <Container  fluid p='100px 0'  style={{placeContent:'center',minHeight:'100vh'}}>

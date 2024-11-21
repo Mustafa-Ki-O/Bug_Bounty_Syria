@@ -55,43 +55,42 @@ const route = createBrowserRouter([
                 path:'changePassword',
                 element: <ChangePassword/>
               },
-            {
+              {
                 path: "home",
                 element: <Home />,
-            },
-            {
+              },
+              {
               path: "gabs",
               element: <Gaps />,
-            },
-            {
+              },
+              {
               path:'researcher/:id',
               element:<Researcher/>
-            },
-
-            {
+              },
+              {
                 path: "company/:id",
                 element: <Company />,
-           }, 
-           {
-               path:'profile',
-               element: <Profile/>
-           },
-           {
-               path:'addProgram',
-               element: <AddProgram/>
-           },
-           {
-            path:'not-found',
-            element:<NotFound/>
-           },
-           {
-            path:'server-error',
-            element:<InternalServer/>
-           },
-           {
-            path:'unauthorized',
-            element:<Unauthorized/>
-           }
+              }, 
+              {
+                  path:'profile',
+                  element: <Profile/>
+              },
+              {
+                  path:'addProgram',
+                  element: <AddProgram/>
+              },
+              {
+               path:'not-found',
+               element:<NotFound/>
+              },
+              {
+               path:'server-error',
+               element:<InternalServer/>
+              },
+              {
+               path:'unauthorized',
+               element:<Unauthorized/>
+              }
         ]
     }
     

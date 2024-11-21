@@ -17,8 +17,8 @@ const Body = ({setProgress}) => {
   return (
     <Container
     fluid
-    w={{lg:'40%',md:'70%',sm:'90%',xs:'100%'}}
-    p={30}
+    w={{lg:'65%',md:'65%',sm:'90%',xs:'100%'}}
+    p={40}
     m='auto'
     >
         <Stack w='100%' bg="#F9F9F9" p={30} style={{borderRadius:10,boxShadow:"0px 2px 6px 0 #000"}}>

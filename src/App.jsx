@@ -20,8 +20,9 @@ function App() {
 
   return (
     <>
+    {show ? <StartPage/> : 
      <RouterProvider  
-     router={route} /> 
+     router={route} /> }
      <Toaster/>
     </>
   )

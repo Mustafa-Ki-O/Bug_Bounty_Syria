@@ -10,7 +10,7 @@ const usePostPassword= () => {
         onSuccess:() => {
             console.log('تم تحديث كلمة المرور بنجاح')  
             toast.success('تم تحديث كلمة المرور بنجاح')
-            navigate('/login')
+            navigate('/Bug_Bounty_Syria/login')
         },
         onError : (err) => {
             console.log('ERROR', err);

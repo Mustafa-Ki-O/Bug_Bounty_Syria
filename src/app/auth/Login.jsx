@@ -84,7 +84,7 @@ const Login = ({ setProgress }) => {
           </Grid>
           <Flex justify="flex-end" my={10}>
             <Link
-              to="/resetpassword"
+              to="/Bug_Bounty_Syria/resetpassword"
               style={{
                 textDecoration: "underline",
                 color: "black",
@@ -101,7 +101,7 @@ const Login = ({ setProgress }) => {
               variant="outline"
               color="#b21222"
               mt="sm"
-              onClick={() => navigate(`/`)}
+              onClick={() => navigate(`/Bug_Bounty_Syria/`)}
             >
               {t("انشاء حساب")}
             </Button>
@@ -136,7 +136,7 @@ const Login = ({ setProgress }) => {
                 variant="outline"
                 color="#b21222"
                 mt="sm"
-                onClick={() => navigate(`/`)}
+                onClick={() => navigate(`/Bug_Bounty_Syria/`)}
               >
                 {t("انشاء حساب")}
               </Button>

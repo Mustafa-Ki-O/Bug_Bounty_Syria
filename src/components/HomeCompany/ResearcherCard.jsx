@@ -44,7 +44,7 @@ const ResearcherCard = ({ id, name, points, description, image }) => {
           radius="md"
           align="flex-end"
           fw={800}
-          onClick={() => navigate(`/researcher/${id}`)}
+          onClick={() => navigate(`/Bug_Bounty_Syria/researcher/${id}`)}
         >
           {t("قراءة المزيد")}
         </Button>

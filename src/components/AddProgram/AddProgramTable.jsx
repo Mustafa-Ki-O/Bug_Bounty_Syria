@@ -67,8 +67,8 @@ function AddProgramTable({ fetchData,setData ,setProgress,products}) {
     />
       <AddProgramModal opened={opened} close={close} setData={setData} fetchData={fetchData} setProgress={setProgress}/>
       <Container px={40} fluid>
-        {products && products.length > 0 ? (
           <>
+          {products && products.length > 0 ? (
         <Table
           className={styles.tableProgram}
           h={363}
@@ -88,6 +88,7 @@ function AddProgramTable({ fetchData,setData ,setProgress,products}) {
           </Table.Thead>
           <Table.Tbody>{rows}</Table.Tbody>
         </Table>
+         ):(<NoData/>)} 
         <Box m={30}>
           <Button variant="outline" color="#B21222" radius={8} onClick={open}>
             <img src={add} width={20} style={{ marginRight: "10px" }} />
@@ -95,7 +96,7 @@ function AddProgramTable({ fetchData,setData ,setProgress,products}) {
           </Button>
         </Box>
         </>
-        ):(<NoData/>)}
+
       </Container>
     </>
   );

@@ -9,7 +9,7 @@ const useReg = () => {
         mutationFn:(formData) => PostResearcher(formData),
         onSuccess:() => {
             toast.success("تم انشاء الحساب بنجاح")   
-            navigate("/checkcoderegister");   
+            navigate("/Bug_Bounty_Syria/checkcoderegister");   
         },
         onError : (err) => {
             console.log('ERROR', err);

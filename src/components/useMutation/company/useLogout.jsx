@@ -8,7 +8,7 @@ const useLogout = () => {
   const { mutate: logout, isLoading } = useMutation({
     mutationFn: () => logOut(),
     onSuccess: () => {
-      navigate("/login");
+      navigate("/Bug_Bounty_Syria/login");
       toast.success("تم تسجيل الخروج بنجاح");
       console.log("تم تسجيل الخروج بنجاح");
     },

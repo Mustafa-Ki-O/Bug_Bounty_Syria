@@ -9,7 +9,7 @@ const useCheckCode = (token) => {
         mutationFn:(code) => PostCode(code,token),
         onSuccess:() => {
             toast.success("تم تأكيد الحساب")   
-            navigate("/login");   
+            navigate("/Bug_Bounty_Syria/login");   
         },
         onError : (err) => {
             console.log('ERROR', err);

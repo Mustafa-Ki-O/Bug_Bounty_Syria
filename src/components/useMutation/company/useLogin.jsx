@@ -9,7 +9,7 @@ const useLogin = () => {
     mutationFn: (formData) => SignInCompany(formData),
     onSuccess: () => {
       toast.success("تم تسجيل الدخول بنجاح");
-      navigate("/home");
+      navigate("/Bug_Bounty_Syria/home");
     },
     onError: (err) => {
       console.log("ERROR", err);

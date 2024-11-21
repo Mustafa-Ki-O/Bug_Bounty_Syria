@@ -11,7 +11,7 @@ const usePostOtp= () => {
         onSuccess:() => {
             console.log('تم ارسال الرمز بنجاح')  
             toast.success('تم ارسال الرمز بنجاح')
-            navigate('/changePassword')
+            navigate('/Bug_Bounty_Syria/changePassword')
         },
         onError : (err) => {
             console.log('ERROR', err);

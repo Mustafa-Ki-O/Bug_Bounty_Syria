@@ -40,12 +40,12 @@ const Navbar = () => {
 
   return (
     <>
-    {(location.pathname !== '/login' &&
-     location.pathname !== '/' &&
-      location.pathname !=='/not-found' &&
-       location.pathname !=='/server-error' &&
-       location.pathname !=='/unauthorized' && 
-       location.pathname !== '/network-error') ? (
+    {(location.pathname !== '/Bug_Bounty_Syria/login' &&
+       location.pathname !== '/Bug_Bounty_Syria/' &&
+       location.pathname !=='/Bug_Bounty_Syria/not-found' &&
+       location.pathname !=='/Bug_Bounty_Syria/server-error' &&
+       location.pathname !=='/Bug_Bounty_Syria/unauthorized' && 
+       location.pathname !== '/Bug_Bounty_Syria/network-error') ? (
       <>
       <DrawerNav opened={opened} close={close} />
       <AppShell navbar={{ width: "100%", breakpoint: "sm" }}>
@@ -65,7 +65,7 @@ const Navbar = () => {
         >
           <Flex justify="space-between" align="center">
             <Burger size="md" lineSize={2} hiddenFrom="md" onClick={open} />
-            <Link to="/home">
+            <Link to="/Bug_Bounty_Syria/home">
               <Image src={vector} w={90} p={5} hiddenFrom="md" />
             </Link>
           </Flex>
@@ -81,8 +81,8 @@ const Navbar = () => {
               boxShadow: "0 3px 10px 0 #000",
             }}
           >
-            {location.pathname === "/" ||
-            location.pathname === "/login"  ? (
+            {location.pathname === "/Bug_Bounty_Syria/" ||
+            location.pathname === "/Bug_Bounty_Syria/login"  ? (
               <Group>
                 <Button
                 radius={8}
@@ -90,7 +90,7 @@ const Navbar = () => {
                   color="#B21222"
                   size="md"
                   onClick={() => {
-                    navigate("/login");
+                    navigate("/Bug_Bounty_Syria/login");
                   }}
                 >
                   {t("دخول")}
@@ -101,7 +101,7 @@ const Navbar = () => {
                   color="#B21222"
                   size="md"
                   onClick={() => {
-                    navigate("/");
+                    navigate("/Bug_Bounty_Syria/");
                   }}
                 >
                   {t("سجل مجاناً")}
@@ -122,7 +122,7 @@ const Navbar = () => {
                         value="profile"
                         fz={18}
                         fw={700}
-                        onClick={() => navigate("/profile")}
+                        onClick={() => navigate("/Bug_Bounty_Syria/profile")}
                       >
                         <Image
                           src={image}
@@ -154,7 +154,7 @@ const Navbar = () => {
                         value="bugs"
                         fz={21}
                         fw={700}
-                        onClick={() => navigate("/gabs")}
+                        onClick={() => navigate("/Bug_Bounty_Syria/gabs")}
                       >
                         {t("الثغرات المكتشفة")}
                       </Tabs.Tab>
@@ -163,7 +163,7 @@ const Navbar = () => {
                         value="securityInfo"
                         fz={21}
                         fw={700}
-                        onClick={() => navigate("/home")}
+                        onClick={() => navigate("/Bug_Bounty_Syria/home")}
                       >
                         {t("الصفحة الرئيسية")}
                       </Tabs.Tab>
@@ -175,7 +175,7 @@ const Navbar = () => {
             <Flex align="center" gap={30}>
               {/* <LanguageSwitcher /> */}
               <LanguagePicker />
-              <Link to="/home">
+              <Link to="/Bug_Bounty_Syria/home">
                 <Image src={vector} width={100} p={10} />
               </Link>
             </Flex>
@@ -186,10 +186,10 @@ const Navbar = () => {
     </>
     ):(
       <Box style={{position:'absolute',right:20,top:20}}>
-        {(location.pathname !== '/not-found' &&
-         location.pathname !== '/server-error' &&
-         location.pathname !=='/unauthorized' && 
-         location.pathname !== '/network-error') &&
+        {(location.pathname !== '/Bug_Bounty_Syria/not-found' &&
+         location.pathname !== '/Bug_Bounty_Syria/server-error' &&
+         location.pathname !=='/Bug_Bounty_Syria/unauthorized' && 
+         location.pathname !== '/Bug_Bounty_Syria/network-error') &&
           (
         <LanguagePicker />
       )}

@@ -10,7 +10,7 @@ const usePostemail = () => {
         onSuccess:() => {
             console.log('تم تحديث كلمة المرور بنجاح')  
             toast.success('ستصلك رسالة برمز التفعيل')
-            navigate('/checkcode')
+            navigate('/Bug_Bounty_Syria/checkcode')
             
         },
         onError : (err) => {
